@@ -7,6 +7,12 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore database config to prevent password being uploaded.
+/config/database.yml
+
+# Ignore mysql database.
+/db/*.mysql
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
