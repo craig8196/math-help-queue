@@ -1,5 +1,5 @@
 Math Lab Help Queue
-===============
+===================
 
 
 Links to Content
@@ -12,6 +12,8 @@ Links to Content
 
 Getting Started
 ---------------
+
+### Linux:
 
 1. Clone this repository.
 

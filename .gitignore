@@ -11,7 +11,8 @@
 /config/database.yml
 
 # Ignore mysql database.
-/db/*.mysql
+/db/*.sqlite3
+/db/*.sqlite3-journal
 
 # Ignore the default SQLite database.
 /db/*.sqlite3

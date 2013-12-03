@@ -1,0 +1,10 @@
+<% @page_title = "Sign In" -%>
+<div class= "sign_in_form">
+  <h1>Sign In</h1>
+  
+  <%= form_tag(:action => 'login_attempt', :method => 'post') do %>
+    <p>Username:</br> <%= text_field_tag(:username) %></p>
+    <p>Password:</br> <%= password_field_tag(:password) %></p>
+    <%= submit_tag("Log In") %>
+  <% end %>
+</div>
