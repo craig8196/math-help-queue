@@ -9,6 +9,7 @@ Links to Content
 * [Wireframe Mock-up](http://share.axure.com/LO8O6N/) Keep in mind that the application is going to be designed primarily for mobile devices and to be embedded in websites like Learning Suite.
 * [Style Guide](StyleGuide.md)
 * [Ryan's Milestone] (firstMilestoneRyan.md)
+* [Craig's First Milestone] (firstMilestoneCraig.md)
 
 
 Getting Started
