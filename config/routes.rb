@@ -1,8 +1,9 @@
 MathHelpQueue::Application.routes.draw do
   root({:to => "sessions#login"})
-  get("sessions/login", to: "sessions#login")
-  post("sessions/login_attempt", to: "sessions#login_attempt")
-  get("sessions/home", to: "sessions#home")
+  get("sessions/login", :to => "sessions#login")
+  post("sessions/login_attempt", :to => "sessions#login_attempt")
+  get("sessions/home", :to => "sessions#home")
+  post("sessions/logout", :to => "sessions#logout")
   #get "sessions/home"
   #get "sessions/profile"
   #get "sessions/setting"
