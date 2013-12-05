@@ -8,6 +8,9 @@ gem 'rails', '4.0.1'
 gem 'sqlite3'
 #gem 'mysql2'
 
+# Use net-ldap for LDAP authentication
+gem 'net-ldap'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

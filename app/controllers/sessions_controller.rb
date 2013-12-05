@@ -1,3 +1,5 @@
+require 'net/ldap'
+
 class SessionsController < ApplicationController
   
   before_filter :auto_authenticate_user, :only => [:home, :profile, :setting]
@@ -7,12 +9,23 @@ class SessionsController < ApplicationController
   end
 
   def login_attempt
-    authorized_user = User.authenticate(params.require(:username))
+    username = params.require(:username)
+    password = params.require(:password)
+    #valid_user = authenticate_user(username, password)
+    valid_user = true
     
-    if authorized_user
-      flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.username}"
-      session[:user_id] = authorized_user.id
-      redirect_to(:action => :home)
+    if valid_user
+      authorized_user = User.get_authorized_user(username)
+    
+      if authorized_user
+        flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.username}"
+        session[:user_id] = authorized_user.id
+        redirect_to(:action => :home)
+      else # this needs to be changed to send back a server error
+        flash[:notice] = "Error finding your account. Contact your system administrators for more details."
+        flash[:color]= "invalid"
+        render "login"
+      end
     else
       flash[:notice] = "Invalid Username or Password"
       flash[:color]= "invalid"
@@ -34,6 +47,19 @@ class SessionsController < ApplicationController
 
   def setting
   end
-  
+  require 'net/ldap'
+
   private
+  
+    def authenticate_user(username, password)
+      if username && password
+        host = "ldap.byu.edu"
+        port = 636
+        ldap = Net::LDAP.new({:port => port, :host => host, :encryption => :simple_tls})
+        ldap.auth("uid=#{username}, ou=People, o=BYU.edu", password)
+        return ldap.bind
+      else
+        return false
+      end
+    end
 end

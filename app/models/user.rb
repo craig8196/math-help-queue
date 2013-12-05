@@ -2,10 +2,10 @@ class User < ActiveRecord::Base
   has_many(:requests)
   has_and_belongs_to_many(:privileges)
   
-  def self.authenticate(username="")
+  # gets a user object, or automatically registers the user if one is not found
+  def self.get_authorized_user(username="")
     user = User.find_by_username(username)
     
-    # temporary, allows easy registration
     if not user
       user = User.new({:username => username})
       if not user.save
