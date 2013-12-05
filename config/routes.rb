@@ -1,15 +1,8 @@
 MathHelpQueue::Application.routes.draw do
-<<<<<<< HEAD
-  
-  resources :posts
-  root to: "welcome#index"
-  
-end
-=======
-
   root({:to => "sessions#login"})
-  get "sessions/login", to: "sessions#login"
-  post "sessions/login_attempt", to: "sessions#login_attempt"
+  get("sessions/login", to: "sessions#login")
+  post("sessions/login_attempt", to: "sessions#login_attempt")
+  get("sessions/home", to: "sessions#home")
   #get "sessions/home"
   #get "sessions/profile"
   #get "sessions/setting"
@@ -53,6 +46,6 @@ end
   #       get 'recent', on: :collection
   #     end
   #   end
->>>>>>> 1775029deab3806f661dd68f8fdb45c56dcb14dc
+end
 
 

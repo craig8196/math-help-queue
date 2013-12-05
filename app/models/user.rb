@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
     # temporary, allows easy registration
     if not user
       user = User.new({:username => username})
-      user.save
+      if not user.save
+        user = nil
+      end
     end
     
     return user
