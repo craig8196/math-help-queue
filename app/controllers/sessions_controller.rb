@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
   def login_attempt
     username = params.require(:username)
-    password = params.require(:password)
+    password = params[:password]
     #valid_user = authenticate_user(username, password)
     valid_user = true
     
@@ -23,12 +23,10 @@ class SessionsController < ApplicationController
         redirect_to(:action => :home)
       else # this needs to be changed to send back a server error
         flash[:notice] = "Error finding your account. Contact your system administrators for more details."
-        flash[:color]= "invalid"
         render "login"
       end
     else
       flash[:notice] = "Invalid Username or Password"
-      flash[:color]= "invalid"
       render "login"
     end
   end

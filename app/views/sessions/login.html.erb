@@ -1,7 +1,7 @@
 <% @page_title = "Sign In" -%>
 <div class= "main">
   <h1>Sign In</h1>
-  
+  <%= flash[:notice] %>
   <%= form_tag(:action => :login_attempt, :method => :post) do %>
     <p>Username:</br> <%= text_field_tag(:username) %></p>
     <p>Password:</br> <%= password_field_tag(:password) %></p>
