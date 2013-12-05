@@ -20,9 +20,9 @@ Getting Started
 
 1. Clone this repository.
 
-2. Install required Ruby Gems as found in the [Gemfile](Gemfile).
+2. Install required Ruby Gems as found in the [Gemfile](Gemfile).  Uncomment the `gem 'mysql2'` line to use mysql in the production version.
 
-3. Enter your mysql username, password, and host into the respective fields of the [DB Configuration File](config/database.yml).  This is for production use only.  Sqlite3 is used for development and testing.
+3. Sqlite3 is used for development and testing.  For production enter your mysql username, password, and host into the respective fields of the [DB Configuration File](config/database.yml).
 
 4. Create the database by executing the following at the command line:
 
