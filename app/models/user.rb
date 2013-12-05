@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many(:requests)
+  has_and_belongs_to_many(:privileges)
+  
   def self.authenticate(username="")
     user = User.find_by_username(username)
     

@@ -3,7 +3,6 @@ class CreatePrivileges < ActiveRecord::Migration
     create_table :privileges do |t|
       t.string :type
       t.integer :section
-
       t.timestamps
     end
   end
