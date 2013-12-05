@@ -20,14 +20,13 @@ Getting Started
 
 1. Clone this repository.
 
-2. Install required Ruby Gems as found in the [Gemfile](Gemfile)
+2. Install required Ruby Gems as found in the [Gemfile](Gemfile).
 
-3. Enter your mysql username, password, and host into the respective fields of the [DB Configuration File](config/database.yml)
+3. Enter your mysql username, password, and host into the respective fields of the [DB Configuration File](config/database.yml).  This is for production use only.  Sqlite3 is used for development and testing.
 
 4. Create the database by executing the following at the command line:
 
-        rake db:create
-        rake db:migrate
+        rake db:setup
 
 5. Run the server:
 
