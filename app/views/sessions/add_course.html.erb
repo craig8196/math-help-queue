@@ -1,0 +1,5 @@
+<%= flash[:notice] %>
+<p><%= "Choose a course to add: " %></p>
+<% for course in @all_courses do %>  
+  <p><%=h course.title %></p> 
+<% end %> 

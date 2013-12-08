@@ -21,3 +21,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore apples stupid file browsing config files
+.DS_Store
