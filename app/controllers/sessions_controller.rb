@@ -50,6 +50,11 @@ class SessionsController < ApplicationController
   private
   
     def authenticate_user(username, password)
+      #prevents guest account access
+      if password == ""
+        return false
+      end
+    
       if username && password
         host = "ldap.byu.edu"
         port = 636
