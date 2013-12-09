@@ -1,10 +1,16 @@
 <% @page_title = "Sign In" -%>
-<div class="main">
-  <h1>Sign In</h1>
-  <%= flash[:notice] %>
-  <%= form_tag(:action => :login_attempt, :method => :post) do %>
-    <p>Username:</br> <%= text_field_tag(:username) %></p>
-    <p>Password:</br> <%= password_field_tag(:password) %></p>
-    <%= submit_tag("Log In") %>
-  <% end %>
+<div class= "main">
+  <div class="center">
+    <h1 class="blue_white">Math Help Q</h1>
+    
+    <% if flash[:notice] -%>
+      <div class="red_white"><%= flash[:notice] %></div><br>
+    <% end %>
+    
+    <%= form_tag(:action => :login_attempt, :method => :post) do %>
+      <%= text_field_tag(:username, nil, :placeholder => 'NetId', :class => 'input_box') %><br>
+      <%= password_field_tag(:password, nil, :placeholder => 'Password', :class => 'input_box') %><br><br>
+      <%= submit_tag("Log In", :class => 'blue_white_b') %>
+    <% end %>
+  </div>
 </div>
