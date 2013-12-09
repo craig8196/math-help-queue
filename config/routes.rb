@@ -3,8 +3,10 @@ MathHelpQueue::Application.routes.draw do
   get("sessions/login", :to => "sessions#login")
   post("sessions/login_attempt", :to => "sessions#login_attempt")
   get("sessions/home", :to => "sessions#home")
+  post("sessions/home", :to => "sessions#home")
   post("sessions/logout", :to => "sessions#logout")
   get("sessions/add_course", :to => "sessions#add_course")
+  post("sessions/settings", :to => "sessions#settings")
   #get "sessions/home"
   #get "sessions/profile"
   #get "sessions/setting"

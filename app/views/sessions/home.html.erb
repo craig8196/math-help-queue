@@ -1,6 +1,10 @@
-<div class="center">
-	<h1 class="blue_white">Math Help List</h1>
-  <%= flash[:notice] %>
-  <p><%= "Hello, your user id is #{session[:user_id]}" %></p>
-  <%= render("logout_button") %>
+<% @page_title = "Home" -%>
+
+<div class="main">
+  <div class="center">
+    <h1 class="blue_white">Math Help List</h1>
+    <%= flash[:notice] %>
+    <p><%= "Hello, your user id is #{session[:user_id]}" %></p>
+    <%= render("lower_buttons") %>
+  </div>
 </div>
