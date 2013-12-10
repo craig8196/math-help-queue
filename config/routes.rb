@@ -6,6 +6,7 @@ MathHelpQueue::Application.routes.draw do
   post("sessions/home", :to => "sessions#home")
   post("sessions/logout", :to => "sessions#logout")
   get("sessions/add_course", :to => "sessions#add_course")
+  post("sessions/add_course_button", :to => "sessions#add_course_button")
   post("sessions/settings", :to => "sessions#settings")
   #get "sessions/home"
   #get "sessions/profile"

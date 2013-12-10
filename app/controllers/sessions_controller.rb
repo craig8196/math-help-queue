@@ -44,9 +44,13 @@ class SessionsController < ApplicationController
 
   def settings
   end
+  
+  def add_course_button
+	redirect_to(:action => :add_course)
+  end
 
   def add_course
-    @all_courses = Courses.all
+    @all_courses = Course.all
     render "add_course"
   end
   require 'net/ldap'
