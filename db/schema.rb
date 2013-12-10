@@ -11,25 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131205181247) do
+ActiveRecord::Schema.define(version: 20131205171431) do
 
   create_table "courses", force: true do |t|
-    t.string   "title"
-    t.string   "discipline"
-    t.integer  "number"
+    t.string   "title",      null: false
+    t.string   "discipline", null: false
+    t.integer  "number",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "privileges", force: true do |t|
-    t.string   "type"
-    t.integer  "section"
+    t.string   "privilege_type", null: false
+    t.integer  "section",        null: false
+    t.integer  "course_id",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "course_id"
   end
-
-  add_index "privileges", ["course_id"], name: "index_privileges_on_course_id"
 
   create_table "privileges_users", id: false, force: true do |t|
     t.integer  "user_id",      null: false
@@ -41,17 +39,14 @@ ActiveRecord::Schema.define(version: 20131205181247) do
   add_index "privileges_users", ["user_id", "privilege_id"], name: "index_privileges_users_on_user_id_and_privilege_id"
 
   create_table "requests", force: true do |t|
-    t.boolean  "active"
+    t.boolean  "active",     null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.string   "username"
-    t.string   "unique"
-    t.string   "null"
-    t.string   "password_hash"
-    t.string   "salt"
+    t.string   "username",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
