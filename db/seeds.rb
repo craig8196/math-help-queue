@@ -6,7 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-courses = [{:title => "Calculus 1", :discipline => "Math", :number => 112}, 
+#populate courses
+courses = [{:title => "All", :discipline => "Admin", :number => 0},
+           {:title => "Calculus 1", :discipline => "Math", :number => 112}, 
            {:title => "Calculus 2", :discipline => "Math", :number => 113}, 
            {:title => "Fundamentals of Mathematics", :discipline => "Math", :number => 290}, 
            {:title => "Linear Algebra", :discipline => "Math", :number => 313}, 
@@ -21,11 +23,39 @@ courses.each do |course|
   Course.create(course)
 end
 
+#populate privileges
+privileges = [{:privilege_type => "admin", :section => 0}, 
+              {:privilege_type => "ta", :section => 1},
+              {:privilege_type => "student", :section => 2}]
+privilege_courses = [{:discipline => "Admin", :number => 0},
+                     {:discipline => "Math", :number => 112},
+                     {:discipline => "Math", :number => 112}]
+                     
+[privilege_courses, privileges].transpose.each do |privilege_course, privilege|
+  pc = Course.find_by(privilege_course)
+  Privilege.create(privilege.merge({:course_id => pc.id}))
+end
 
+#populate users
 users = [{:username => "Craig"}, 
          {:username => "Ryan"}, 
          {:username => "Adam"}, 
-         {:username => "Jeremy"}]
-users.each do |user|
-  User.create(user)
+         {:username => "Jeremy"},
+         {:username => "TA"},
+         {:username => "Stoodent"}]
+
+privilege_types = ["admin",
+                   "admin",
+                   "admin",
+                   "admin",
+                   "ta",
+                   "student"]
+
+[users, privilege_types].transpose.each do |user_info, privilege_type|
+  user = User.create(user_info)
+  privilege = Privilege.find_by_privilege_type(privilege_type)
+  user.privileges << privilege
 end
+
+
+

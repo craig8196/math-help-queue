@@ -1,9 +1,10 @@
 class CreatePrivileges < ActiveRecord::Migration
   def change
     create_table :privileges do |t|
-      t.string :type
-      t.integer :section
-      t.timestamps
+      t.string(:privilege_type, {:null => false})
+      t.integer(:section, {:null => false})
+      t.references(:course, {:null => false})
+      t.timestamps()
     end
   end
 end
