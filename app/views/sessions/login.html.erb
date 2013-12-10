@@ -1,14 +1,17 @@
 <% @page_title = "Sign In" -%>
-<%= stylesheet_link_tag "sessions_a" %>
-<div class="main">
-  <div class="c">
-    <h1 class="blue_white">Math Help List</h1>
+<div class= "main">
+  <div class="center">
+    <h1 class="blue_white">Math Help Q</h1>
+    
     <% if flash[:notice] -%>
-	  <div class="red_white"><%= flash[:notice] %></div><br>
+      <div class="red_white"><%= flash[:notice] %></div><br>
     <% end %>
+    
     <%= form_tag(:action => :login_attempt, :method => :post) do %>
-      <%= text_field_tag(:username, nil, :placeholder => 'Username', :class => 'input_box') %><br>
+      <%= text_field_tag(:username, nil, :placeholder => 'NetId', :class => 'input_box') %><br>
       <%= password_field_tag(:password, nil, :placeholder => 'Password', :class => 'input_box') %><br><br>
       <%= submit_tag("Log In", :class => 'blue_white_b') %>
     <% end %>
+  </div>
+</div>
 

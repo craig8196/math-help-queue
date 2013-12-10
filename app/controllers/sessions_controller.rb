@@ -18,7 +18,6 @@ class SessionsController < ApplicationController
       authorized_user = User.get_authorized_user(username)
     
       if authorized_user
-        flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.username}"
         session[:user_id] = authorized_user.id
         redirect_to(:action => :home)
       else # this needs to be changed to send back a server error
@@ -43,7 +42,7 @@ class SessionsController < ApplicationController
   def profile
   end
 
-  def setting
+  def settings
   end
 
   def add_course
@@ -55,6 +54,11 @@ class SessionsController < ApplicationController
   private
   
     def authenticate_user(username, password)
+      #prevents guest account access
+      if password == ""
+        return false
+      end
+    
       if username && password
         host = "ldap.byu.edu"
         port = 636
