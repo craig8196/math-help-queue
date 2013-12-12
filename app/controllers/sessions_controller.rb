@@ -11,10 +11,11 @@ class SessionsController < ApplicationController
   def login_attempt
     username = params.require(:username)
     password = params[:password]
-    #valid_user = authenticate_user(username, password)
-    valid_user = true
+    valid_user = authenticate_user(username, password)
+    #valid_user = true
     
     if valid_user
+      flash[:notice] = ""
       authorized_user = User.get_authorized_user(username)
     
       if authorized_user
