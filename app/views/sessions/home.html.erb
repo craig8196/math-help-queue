@@ -5,6 +5,7 @@
     <h1 class="blue_white">Math Help Q</h1>
     <%= flash[:notice] %>
     <p><%= "Hello, your user id is #{session[:user_id]}" %></p>
+	<%= render("get_help_button") %><br>
 	<%= render("add_course_button") %><br>
     <%= render("logout_button") %>
   </div>

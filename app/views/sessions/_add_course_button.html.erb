@@ -1,8 +1,0 @@
-<%= flash[:notice] %>
-<div class="center">
-<p class="blue_white"><%= "Choose a course to add: " %></p>
-<%= form_tag(:action => :add_course, :method => :post) do %>
-  <%= select_tag(:class, options_from_collection_for_select(@all_courses, "discipline", "number"), :class => 'blue_black_c') %>
-  <%= submit_tag("Add", :class => 'blue_white_b') %>
-<% end %>
-</div> 

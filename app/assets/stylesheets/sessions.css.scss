@@ -2,13 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.center {text-align:center;}
-
 .blue_white {
 padding:15px;
 font-family:"Pericles", Pericles, sans-serif;
 background-color:#00008B;
 color:white;
+}
+
+.center {
+text-align:center;
 }
 
 .pericles {
@@ -37,6 +39,22 @@ padding:12px;
 font-family:"Pericles", Pericles, sans-serif;
 background-color:#104E8B;
 color:white;
+}
+
+.blue_black_c{
+padding:12px;
+font-family:"Pericles", Pericles, sans-serif;
+background-color:#E0EEEE;
+color:black;
+}
+
+.blue_black_b{
+margin-right:33%;
+margin-left:33%;
+padding:12px;
+font-family:"Pericles", Pericles, sans-serif;
+background-color:#E0EEEE;
+color:black;
 }
 
 .blue_white_b:hover {
