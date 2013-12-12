@@ -53,6 +53,10 @@ class SessionsController < ApplicationController
     @all_courses = Course.all
     render "add_course"
   end
+  
+  def get_help
+  end
+  
   require 'net/ldap'
 
   private
