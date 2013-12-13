@@ -37,6 +37,7 @@ class SessionsController < ApplicationController
   end
 
   def home
+    @user = User.find(session[:user_id])
     render "home"
   end
 
