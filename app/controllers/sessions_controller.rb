@@ -11,8 +11,8 @@ class SessionsController < ApplicationController
   def login_attempt
     username = params.require(:username)
     password = params[:password]
-    valid_user = authenticate_user(username, password)
-    #valid_user = true
+    #valid_user = authenticate_user(username, password)
+    valid_user = true
     
     if valid_user
       flash[:notice] = ""
@@ -38,7 +38,13 @@ class SessionsController < ApplicationController
 
   def home
     @user = User.find(session[:user_id])
-    render "home"
+    highest_privilege = @user.privileges.order(id: :asc).first.privilege_type
+    
+    if highest_privilege == "student"    
+      render "home"
+    else
+      render :text => highest_privilege
+    end
   end
 
   def profile
