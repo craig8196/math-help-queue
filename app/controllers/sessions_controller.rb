@@ -56,6 +56,8 @@ class SessionsController < ApplicationController
   end
   
   def get_help
+    @user = User.find(session[:user_id])
+    @request = @user.requests.create(:active => true)
   end
   
   require 'net/ldap'
