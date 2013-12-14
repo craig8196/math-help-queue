@@ -1,0 +1,48 @@
+<html>
+<head>
+<script type="text/javascript">
+<!--
+function setHelpTime(){
+	window["helpTime"] = new Date();
+}
+
+function updateTimer()
+{
+  var curTime = new Date();
+
+  var curTotal = curTime.getTime()/1000;
+  var helpTotal = window["helpTime"].getTime()/1000;
+  var displayTotal = Math.floor(curTotal - helpTotal);
+ 
+  var helpHours = window["helpTime"].getHours();
+  var helpMinutes = window["helpTime"].getMinutes();
+  var helpSeconds = window["helpTime"].getSeconds();
+
+  var displayHours = Math.floor(displayTotal/3600);
+  displayTotal %= 3600;
+  var displayMinutes = Math.floor(displayTotal/60);
+  var displaySeconds = Math.floor(displayTotal%60);
+
+  // Pad the minutes and seconds with leading zeros, if required
+  displayMinutes = ( displayMinutes < 10 ? "0" : "" ) + displayMinutes;
+  displaySeconds = ( displaySeconds < 10 ? "0" : "" ) + displaySeconds;
+
+  var displayString = displayHours + ":" + displayMinutes + ":" + displaySeconds;
+
+  // Update the time display
+  document.getElementById("timer").firstChild.nodeValue = displayString;
+}
+
+// -->
+</script>
+</head>
+<!--body onload="updateClock(); setInterval('updateClock()', 1000 )"><-->
+<body onload="setHelpTime(); setInterval('updateTimer()', 1000 )">
+<div class="center">
+<p class="blue_white"><%= "You are on the list to be helped." %></p>
+<p class="blue_black_b">Your position in the list is </p>
+<p class="lightTan_black"><%= @request.id%> </p>
+<p class="blue_black_b"><span id="timer">&nbsp;</span></p>
+</div>
+</body>
+</html>
