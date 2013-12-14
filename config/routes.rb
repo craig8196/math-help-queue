@@ -11,6 +11,7 @@ MathHelpQueue::Application.routes.draw do
   post("sessions/get_help", :to => "sessions#get_help")
   post("sessions/edit_user_permissions", :to => "sessions#edit_user_permissions")
   get("sessions/edit_user_permissions", :to => "sessions#edit_user_permissions")
+  post("sessions/edit_admin", :to => "sessions#edit_admin")
   #get "sessions/home"
   #get "sessions/profile"
   #get "sessions/setting"

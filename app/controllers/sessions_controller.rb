@@ -75,6 +75,37 @@ class SessionsController < ApplicationController
     render "edit_user_permissions"
   end
   
+  def edit_admin
+    render :test => "edit_admin called"
+    user_id = params['user_id']
+    user = User.find(user_id)
+    # TODO check if user already has privilege, if so, get rid of it. otherwise, add it.
+    privilege = Privilege.find(1)
+    privilege.users << user
+    user.privileges << privilege
+    render json: { user_id: user_id, privilege: 1 }
+  end
+  
+  def edit_ta
+    user_id = params['user_id']
+	user = User.find(user_id)
+    # TODO check if user already has privilege, if so, get rid of it. otherwise, add it.
+    privilege = Privilege.find(2)
+    privilege.users << user
+    user.privileges << privilege
+    render json: { user_id: user_id, privilege: 2 }
+  end
+  
+  def edit_student
+    user_id = params['user_id']
+	user = User.find(user_id)
+    # TODO check if user already has privilege, if so, get rid of it. otherwise, add it.
+    privilege = Privilege.find(3)
+    privilege.users << user
+    user.privileges << privilege
+    render json: { user_id: user_id, privilege: 3 }
+  end
+  
   require 'net/ldap'
 
   private
