@@ -16,6 +16,16 @@
 	  <% end %>
 	  
 	</p>
+	
+	<h4 class="blue_white">Current Help List</h4>
+	<div class="blue_black_b">
+	<div alight="left">
+	<% @names.each_with_index do |n, index| %>
+	<%= index + 1 %> <%= n %><br>
+	<% end %>
+	</div>
+	</div>
+	<br>
     <%= render("logout_button") %>
   </div>
 </div>
