@@ -5,10 +5,10 @@ MathHelpQueue::Application.routes.draw do
   get("sessions/home", :to => "sessions#home")
   post("sessions/home", :to => "sessions#home")
   post("sessions/logout", :to => "sessions#logout")
-  get("sessions/add_course", :to => "sessions#add_course")
-  post("sessions/_add_course_button", :to => "sessions#add_course_button")
+  get("students/add_course", :to => "students#add_course")
+  post("students/_add_course_button", :to => "students#add_course_button")
   post("sessions/settings", :to => "sessions#settings")
-  post("sessions/get_help", :to => "sessions#get_help")
+  post("students/get_help", :to => "students#get_help")
   post("sessions/edit_user_permissions", :to => "sessions#edit_user_permissions")
   get("sessions/edit_user_permissions", :to => "sessions#edit_user_permissions")
   #get "sessions/home"
