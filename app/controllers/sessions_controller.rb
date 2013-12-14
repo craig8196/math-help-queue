@@ -39,6 +39,13 @@ class SessionsController < ApplicationController
   def home
     @user = User.find(session[:user_id])
     highest_privilege = @user.privileges.order(id: :asc).first.id
+	requests = Request.all
+	@names = []
+	for r in requests
+	   _user = User.find(r.user_id)
+	   name = _user.username
+	   @names << name
+	end
     
     if highest_privilege == 3 		#3=student
       render "home"
@@ -55,21 +62,7 @@ class SessionsController < ApplicationController
 
   def settings
   end
-  
-  def add_course_button
-	redirect_to(:action => :add_course)
-  end
-
-  def add_course
-    @all_courses = Course.all
-    render "add_course"
-  end
-  
-  def get_help
-    @user = User.find(session[:user_id])
-    @request = @user.requests.create(:active => true)
-  end
-  
+ 
   def edit_user_permissions()
     @all_users = User.all
     render "edit_user_permissions"
