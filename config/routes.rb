@@ -9,6 +9,8 @@ MathHelpQueue::Application.routes.draw do
   post("sessions/_add_course_button", :to => "sessions#add_course_button")
   post("sessions/settings", :to => "sessions#settings")
   post("sessions/get_help", :to => "sessions#get_help")
+  post("sessions/edit_user_permissions", :to => "sessions#edit_user_permissions")
+  get("sessions/edit_user_permissions", :to => "sessions#edit_user_permissions")
   #get "sessions/home"
   #get "sessions/profile"
   #get "sessions/setting"

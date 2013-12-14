@@ -38,13 +38,16 @@ class SessionsController < ApplicationController
 
   def home
     @user = User.find(session[:user_id])
-    highest_privilege = @user.privileges.order(id: :asc).first.privilege_type
+    highest_privilege = @user.privileges.order(id: :asc).first.id
     
-    if highest_privilege == "student"    
+    if highest_privilege == 3 		#3=student
       render "home"
-    else
-      render :text => highest_privilege
+    elsif highest_privilege == 2 	#2=ta
+      render "ta_home"
+    else 							#1=admin
+      render "admin_home"
     end
+    
   end
 
   def profile
@@ -65,6 +68,11 @@ class SessionsController < ApplicationController
   def get_help
     @user = User.find(session[:user_id])
     @request = @user.requests.create(:active => true)
+  end
+  
+  def edit_user_permissions()
+    @all_users = User.all
+    render "edit_user_permissions"
   end
   
   require 'net/ldap'
