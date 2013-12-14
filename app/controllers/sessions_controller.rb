@@ -50,9 +50,9 @@ class SessionsController < ApplicationController
     if highest_privilege == 3 		#3=student
       render "home"
     elsif highest_privilege == 2 	#2=ta
-      render "ta_home"
+      render "tas/ta_home"
     else 							#1=admin
-      render "admin_home"
+      render "admin/admin_home"
     end
     
   end
@@ -61,42 +61,6 @@ class SessionsController < ApplicationController
   end
 
   def settings
-  end
- 
-  def edit_user_permissions()
-    @all_users = User.all
-    render "edit_user_permissions"
-  end
-  
-  def edit_admin
-    render :test => "edit_admin called"
-    user_id = params['user_id']
-    user = User.find(user_id)
-    # TODO check if user already has privilege, if so, get rid of it. otherwise, add it.
-    privilege = Privilege.find(1)
-    privilege.users << user
-    user.privileges << privilege
-    render json: { user_id: user_id, privilege: 1 }
-  end
-  
-  def edit_ta
-    user_id = params['user_id']
-	user = User.find(user_id)
-    # TODO check if user already has privilege, if so, get rid of it. otherwise, add it.
-    privilege = Privilege.find(2)
-    privilege.users << user
-    user.privileges << privilege
-    render json: { user_id: user_id, privilege: 2 }
-  end
-  
-  def edit_student
-    user_id = params['user_id']
-	user = User.find(user_id)
-    # TODO check if user already has privilege, if so, get rid of it. otherwise, add it.
-    privilege = Privilege.find(3)
-    privilege.users << user
-    user.privileges << privilege
-    render json: { user_id: user_id, privilege: 3 }
   end
   
   require 'net/ldap'

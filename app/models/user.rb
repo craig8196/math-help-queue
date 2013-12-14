@@ -13,11 +13,8 @@ class User < ActiveRecord::Base
       if not user.save
         user = nil
       else
-   	    privilege = Privilege.find(3) #Default privilege is 3=student
-   	   
    	    #Adding entry to the table privileges_users:
-   	    #privilege.users << user		 #Adding user to privilege
-		user.privileges << privilege #Adding privilege to user
+		user.privileges << Privilege.find(3) #Adding privilege to user
       end
     end
     
