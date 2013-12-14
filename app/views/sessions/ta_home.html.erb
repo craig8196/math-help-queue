@@ -18,13 +18,17 @@
 	</p>
 	
 	<h4 class="blue_white">Current Help List</h4>
-	<div class="blue_black_b">
-	<div alight="left">
+	<p>
 	<% @names.each_with_index do |n, index| %>
-	<%= index + 1 %> <%= n %><br>
+	<% if (index % 2) == 0 %>
+      <div class="blue_black_bLeft">
+	<% else %>
+	  <div class="tan_black_bLeft">
+    <% end %>	  
+	<%= index + 1 %>  &nbsp&nbsp&nbsp<%= n%><br>
+	  </div>
 	<% end %>
-	</div>
-	</div>
+	</p>
 	<br>
     <%= render("logout_button") %>
   </div>
