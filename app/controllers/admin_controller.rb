@@ -1,6 +1,5 @@
 class AdminController < ApplicationController
 
-<<<<<<< HEAD
   def admin_home
 	@user = User.find(session[:user_id])
     render "admin_home"
