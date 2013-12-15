@@ -22,6 +22,8 @@ MathHelpQueue::Application.routes.draw do
   post("admin/add_new_course", :to => "admin#add_new_course")
   get("admin/submit_new_course", :to => "admin#submit_new_course")
   post("admin/submit_new_course", :to => "admin#submit_new_course")
+  get("admin/delete_course", :to => "admin#delete_course")
+  post("admin/delete_course", :to => "admin#delete_course")
   get("admin/edit_user_privileges", :to => "admin#edit_user_privileges")
   post("admin/edit_user_privileges", :to => "admin#edit_user_privileges")
   post("admin/edit_admin", :to => "admin#edit_admin")

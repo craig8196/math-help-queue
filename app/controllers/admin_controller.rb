@@ -30,6 +30,7 @@ class AdminController < ApplicationController
   end
   
   def delete_course
+    render :text => params[:c][:cid]
   end
   
   def edit_admin
