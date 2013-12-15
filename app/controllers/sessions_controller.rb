@@ -39,12 +39,11 @@ class SessionsController < ApplicationController
   def home
     @user = User.find(session[:user_id])
     highest_privilege = @user.privileges.order(id: :asc).first.id
-	requests = Request.all
+	requests = Request.all.where(active: true)
 	@names = []
 	for r in requests
 	   _user = User.find(r.user_id)
-	   name = _user.username
-	   @names << name
+	   @names << _user.username
 	end
     
     if highest_privilege == 3 		#3=student

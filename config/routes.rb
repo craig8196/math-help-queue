@@ -19,6 +19,12 @@ MathHelpQueue::Application.routes.draw do
   
   get("admin/admin_home", :to => "admin#admin_home")
   post("admin/admin_home", :to => "admin#admin_home")
+  get("admin/change_perspective", :to => "admin#change_perspective")
+  post("admin/change_perspective", :to => "admin#change_perspective")
+  get("admin/ta_perspective", :to => "admin#ta_perspective")
+  post("admin/ta_perspective", :to => "admin#ta_perspective")
+  get("admin/student_perspective", :to => "admin#student_perspective")
+  post("admin/student_perspective", :to => "admin#student_perspective")
   get("admin/manage_courses", :to => "admin#manage_courses")
   post("admin/manage_courses", :to => "admin#manage_courses")
   get("admin/add_course", :to => "admin#add_course")

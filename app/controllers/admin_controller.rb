@@ -5,9 +5,19 @@ class AdminController < ApplicationController
     render "admin_home"
   end
   
-  def edit_user_privileges
-    @all_users = User.all.order(username: :asc)
-    render "edit_user_privileges"
+  def ta_perspective
+    @user = User.find(session[:user_id])
+    @names = []
+	for r in Request.all.where(active: true)
+	   _user = User.find(r.user_id)
+	   @names << _user.username
+	end
+    render "tas/ta_home"
+  end
+  
+  def student_perspective
+    @user = User.find(session[:user_id])
+    render "sessions/home"
   end
   
   def manage_courses
@@ -36,6 +46,11 @@ class AdminController < ApplicationController
     end
     @all_courses = Course.all.order(title: :asc)
     render "manage_courses"
+  end
+  
+  def edit_user_privileges
+    @all_users = User.all.order(username: :asc)
+    render "edit_user_privileges"
   end
   
   def edit_admin
