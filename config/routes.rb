@@ -6,6 +6,7 @@ MathHelpQueue::Application.routes.draw do
   post("sessions/home", :to => "sessions#home")
   post("sessions/logout", :to => "sessions#logout")
   post("sessions/settings", :to => "sessions#settings")
+  post("sessions/edit_admin", :to => "sessions#edit_admin")
   #get "sessions/home"
   #get "sessions/profile"
   #get "sessions/setting"
@@ -16,7 +17,7 @@ MathHelpQueue::Application.routes.draw do
   
   get("admin/admin_home", :to => "admin#admin_home")
   post("admin/admin_home", :to => "admin#admin_home")
-  post("admin/edit_user_permissions", :to => "admin#edit_user_permissions")
+  post("admin/_edit_user_permissions_button", :to => "admin#edit_user_permissions_button")
   get("admin/edit_user_permissions", :to => "admin#edit_user_permissions")
   post("admin/edit_admin", :to => "admin#edit_admin")
   post("admin/edit_ta", :to => "admin#edit_ta")

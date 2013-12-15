@@ -1,5 +1,6 @@
 class AdminController < ApplicationController
 
+<<<<<<< HEAD
   def admin_home
 	@user = User.find(session[:user_id])
     render "admin_home"
@@ -8,6 +9,10 @@ class AdminController < ApplicationController
   def edit_user_permissions()
     @all_users = User.all.order(username: :asc)
     render "edit_user_permissions"
+  end
+  
+  def edit_user_permissions_button
+    redirect_to(:action => :edit_user_permissions)
   end
   
   def edit_admin
@@ -42,5 +47,4 @@ class AdminController < ApplicationController
       user.privileges << Privilege.find(3)
     end
   end
-
 end

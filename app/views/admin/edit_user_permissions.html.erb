@@ -8,17 +8,16 @@
     <p class="blue_black_b">
       User Permissions	  
 	</p>
-	
+
 	<%= render("admin/admin_home_button") %>
     <%= render("sessions/logout_button") %>
-	
+    
 	<center>
 	  <table name="user_permissions" class="center">
 	    <th>&nbsp;&nbsp; Username &nbsp;&nbsp;</th>
 	    <th>&nbsp;&nbsp; Administrator &nbsp;&nbsp;</th>
 	    <th>&nbsp;&nbsp; Teacher's Assistant &nbsp;&nbsp;</th>
 	    <th>&nbsp;&nbsp; Student &nbsp;&nbsp;</th>
-	    <th></th>
 	    <% @all_users.each do |user| %>
 	      
 	      <tr>
