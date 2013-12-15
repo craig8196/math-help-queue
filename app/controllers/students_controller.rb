@@ -1,11 +1,17 @@
 class StudentsController < ApplicationController
   def add_course_button
-    redirect_to(:action => :add_course)
+    redirect_to(:action => :display_courses)
+  end
+
+  def display_courses
+    @all_courses = Course.all
+    render "add_course"
   end
 
   def add_course
-    @all_courses = Course.all
-    render "add_course"
+    @new_course_id = params[:course]
+    #TODO: actually add the course
+    render "course_added"
   end
   
   def get_help
