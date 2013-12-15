@@ -2,15 +2,24 @@
 
 <div class="main">
   <div class="center">
-    <h1 class="blue_white">Edit User Permissions</h1>
-    <h3 class="blue_white">Administrator</h3>
+    <h1 class="blue_white">
+      <center>
+        <table width="380">
+          <tr>
+            <td>Edit User Privileges</td>
+            <td><%= render("sessions/logout_button") %></td>
+          </tr>
+        </table>
+      </center>
+    </h1>
+    <h3 class="gray_blue_sub">Administrator</h3>
     <%= flash[:notice] %>
+    
     <p class="blue_black_b">
       User Permissions	  
 	</p>
 
 	<%= render("admin/admin_home_button") %>
-    <%= render("sessions/logout_button") %>
     
 	<center>
 	  <table name="user_permissions" class="center">
@@ -32,6 +41,5 @@
 	  </table>
 	</center>
 	<%= render("admin/admin_home_button") %>
-    <%= render("sessions/logout_button") %>
   </div>
 </div>
