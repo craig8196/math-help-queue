@@ -38,17 +38,20 @@ class SessionsController < ApplicationController
   
   def admin_perspective
     @user = User.find(session[:user_id])
+    @highest_privilege = @user.privileges.order(id: :asc).first.id
     render "admin/admin_home"
   end
   
   def ta_perspective
     @user = User.find(session[:user_id])
+    @highest_privilege = @user.privileges.order(id: :asc).first.id
     @names = get_request_list
     render "tas/ta_home"
   end
   
   def student_perspective
     @user = User.find(session[:user_id])
+    @highest_privilege = @user.privileges.order(id: :asc).first.id
     render "sessions/home"
   end
 
