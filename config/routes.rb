@@ -13,7 +13,8 @@ MathHelpQueue::Application.routes.draw do
   
   get("students/get_help", :to => "students#get_help")
   post("students/get_help", :to => "students#get_help")
-  get("students/add_course", :to => "students#add_course")
+  get("students/add_course", :to => "students#display_courses")
+  post("students/add_course", :to => "students#add_course")
   post("students/_add_course_button", :to => "students#add_course_button")
   
   get("admin/admin_home", :to => "admin#admin_home")
