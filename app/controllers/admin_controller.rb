@@ -14,6 +14,14 @@ class AdminController < ApplicationController
     redirect_to(:action => :edit_user_permissions)
   end
   
+  def add_new_class
+    render "add_new_class"
+  end
+  
+  def add_new_class_button
+    redirect_to(:action => :add_new_class)
+  end
+  
   def edit_admin
     user = User.find(params['user_id'])
     
