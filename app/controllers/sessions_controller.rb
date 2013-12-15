@@ -50,9 +50,9 @@ class SessionsController < ApplicationController
     if highest_privilege == 3 		#3=student
       render "home"
     elsif highest_privilege == 2 	#2=ta
-      render "ta_home"
+      render "tas/ta_home"
     else 							#1=admin
-      render "admin_home"
+      render "admin/admin_home"
     end
     
   end
@@ -61,11 +61,6 @@ class SessionsController < ApplicationController
   end
 
   def settings
-  end
- 
-  def edit_user_permissions()
-    @all_users = User.all
-    render "edit_user_permissions"
   end
   
   require 'net/ldap'
