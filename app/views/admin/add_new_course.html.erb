@@ -1,0 +1,59 @@
+<% @page_title = "Add Course" -%>
+
+<div class="main">
+  <div class="center">
+    <h1 class="blue_white">
+      <center>
+        <table>
+          <tr>
+            <td colspan="2" align="center">Add Course</td>
+          </tr>
+          <tr>
+            <div colspan=1>
+	          <td colspan="1" align="center"><%= render("admin/admin_home_button") %></td>
+	          <td colspan="1" align="center"><%= render("sessions/logout_button") %></td>
+	        </div>
+          </tr>
+        </table>
+      </center>
+    </h1>
+    <h3 class="gray_blue_sub">Administrator</h3>
+    <%= flash[:notice] %>
+    
+    <p class="blue_black_b">
+      <% if @all_courses.count == 1 %>
+        There is currently 1 course
+      <% else %>
+        There are currently <%= @all_courses.count %> courses
+      <% end %>
+      in the system.<br><br>
+      Add a course below.
+	</p>
+    
+	<center>
+	  <table name="existing_courses" class="center">
+	    <th>&nbsp;&nbsp; Title &nbsp;&nbsp;</th>
+	    <th>&nbsp;&nbsp; Level &nbsp;&nbsp;</th>
+	    <th>&nbsp;&nbsp; Discipline &nbsp;&nbsp;</th>
+	    <th></th>
+	    
+	    <tr>
+	      <td>&nbsp;&nbsp; <%= text_field(:new_course, :new_title) %> &nbsp;&nbsp;</td>
+	      <td>&nbsp;&nbsp; <%= text_field(:new_course, :new_level) %> &nbsp;&nbsp;</td>
+	      <td>&nbsp;&nbsp; <%= text_field(:new_course, :new_discipline) %> &nbsp;&nbsp;</td>
+	      <td><input name="commit" type="submit" value="+" /></td>
+	    </tr>
+	    
+	    <% @all_courses.each do |c| %>
+	      <tr>
+	        <td><%= c.title %></td>
+	        <td><%= c.number %></td>
+	        <td><%= c.discipline %></td>
+	        <td></td>
+	      </tr>
+	    <% end %>
+	  </table>
+	</center>
+	
+  </div>
+</div>

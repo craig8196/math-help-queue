@@ -10,8 +10,9 @@ class AdminController < ApplicationController
     render "edit_user_privileges"
   end
   
-  def add_new_class
-    render "add_new_class"
+  def add_new_course
+    @all_courses = Course.all.order(title: :asc)
+    render "add_new_course"
   end
   
   def edit_admin

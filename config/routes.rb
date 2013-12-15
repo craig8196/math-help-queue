@@ -17,11 +17,14 @@ MathHelpQueue::Application.routes.draw do
   
   get("admin/admin_home", :to => "admin#admin_home")
   post("admin/admin_home", :to => "admin#admin_home")
-  post("admin/edit_user_privileges", :to => "admin#edit_user_privileges")
+  get("admin/add_new_course", :to => "admin#add_new_course")
+  post("admin/add_new_course", :to => "admin#add_new_course")
   get("admin/edit_user_privileges", :to => "admin#edit_user_privileges")
+  post("admin/edit_user_privileges", :to => "admin#edit_user_privileges")
   post("admin/edit_admin", :to => "admin#edit_admin")
   post("admin/edit_ta", :to => "admin#edit_ta")
   post("admin/edit_student", :to => "admin#edit_student")
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
