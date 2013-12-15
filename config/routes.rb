@@ -17,8 +17,8 @@ MathHelpQueue::Application.routes.draw do
   
   get("admin/admin_home", :to => "admin#admin_home")
   post("admin/admin_home", :to => "admin#admin_home")
-  post("admin/edit_user_permissions", :to => "admin#edit_user_permissions")
-  get("admin/edit_user_permissions", :to => "admin#edit_user_permissions")
+  post("admin/edit_user_privileges", :to => "admin#edit_user_privileges")
+  get("admin/edit_user_privileges", :to => "admin#edit_user_privileges")
   post("admin/edit_admin", :to => "admin#edit_admin")
   post("admin/edit_ta", :to => "admin#edit_ta")
   post("admin/edit_student", :to => "admin#edit_student")

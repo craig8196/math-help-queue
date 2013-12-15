@@ -5,9 +5,9 @@ class AdminController < ApplicationController
     render "admin_home"
   end
   
-  def edit_user_permissions
+  def edit_user_privileges
     @all_users = User.all.order(username: :asc)
-    render "edit_user_permissions"
+    render "edit_user_privileges"
   end
   
   def add_new_class

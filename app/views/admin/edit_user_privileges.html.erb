@@ -1,0 +1,47 @@
+<% @page_title = "Edit Privileges" -%>
+
+<div class="main">
+  <div class="center">
+    <h1 class="blue_white">
+      <center>
+        <table>
+          <tr>
+            <td colspan="2" align="center">Edit User Privileges</td>
+          </tr>
+          <tr>
+            <div colspan=1>
+	          <td colspan="1" align="center"><%= render("admin/admin_home_button") %></td>
+	          <td colspan="1" align="center"><%= render("sessions/logout_button") %></td>
+	        </div>
+          </tr>
+        </table>
+      </center>
+    </h1>
+    <h3 class="gray_blue_sub">Administrator</h3>
+    <%= flash[:notice] %>
+    
+    <p class="blue_black_b">
+      User Permissions	  
+	</p>
+    
+	<center>
+	  <table name="user_permissions" class="center">
+	    <th>&nbsp;&nbsp; Username &nbsp;&nbsp;</th>
+	    <th>&nbsp;&nbsp; Administrator &nbsp;&nbsp;</th>
+	    <th>&nbsp;&nbsp; Teacher's Assistant &nbsp;&nbsp;</th>
+	    <th>&nbsp;&nbsp; Student &nbsp;&nbsp;</th>
+	    
+	    <% @all_users.each do |user| %>
+	      <tr>
+	        <td><%= user.username %></td>
+	        <td><%= check_box_tag 'admin', user.id, user.privileges.exists?(1), :disabled => user.username=='adam89fr', :class => 'edit_admin' %></td>
+	        <td><%= check_box_tag 'ta', user.id, user.privileges.exists?(2), :disabled => false, :class => 'edit_ta' %></td>
+	        <td><%= check_box_tag 'student', user.id, user.privileges.exists?(3), :disabled => true, :class => 'edit_student' %></td>
+	        <td><%= content_tag :span, '', :id => "privilege_#{user.id}" %></td>
+	      </tr>
+	      
+	    <% end %>
+	  </table>
+	</center>
+  </div>
+</div>
