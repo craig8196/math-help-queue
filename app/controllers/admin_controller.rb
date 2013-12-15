@@ -5,21 +5,13 @@ class AdminController < ApplicationController
     render "admin_home"
   end
   
-  def edit_user_permissions()
+  def edit_user_permissions
     @all_users = User.all.order(username: :asc)
     render "edit_user_permissions"
   end
   
-  def edit_user_permissions_button
-    redirect_to(:action => :edit_user_permissions)
-  end
-  
   def add_new_class
     render "add_new_class"
-  end
-  
-  def add_new_class_button
-    redirect_to(:action => :add_new_class)
   end
   
   def edit_admin
