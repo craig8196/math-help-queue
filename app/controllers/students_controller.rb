@@ -11,6 +11,7 @@ class StudentsController < ApplicationController
   def get_help
     @user = User.find(session[:user_id])
     @request = @user.requests.create(:active => true)
+    @all_requests = Request.all.where(active: true).count
   end
 
 end

@@ -11,6 +11,7 @@ MathHelpQueue::Application.routes.draw do
   #get "sessions/profile"
   #get "sessions/setting"
   
+  get("students/get_help", :to => "students#get_help")
   post("students/get_help", :to => "students#get_help")
   get("students/add_course", :to => "students#add_course")
   post("students/_add_course_button", :to => "students#add_course_button")
@@ -19,6 +20,8 @@ MathHelpQueue::Application.routes.draw do
   post("admin/admin_home", :to => "admin#admin_home")
   get("admin/add_new_course", :to => "admin#add_new_course")
   post("admin/add_new_course", :to => "admin#add_new_course")
+  get("admin/submit_new_course", :to => "admin#submit_new_course")
+  post("admin/submit_new_course", :to => "admin#submit_new_course")
   get("admin/edit_user_privileges", :to => "admin#edit_user_privileges")
   post("admin/edit_user_privileges", :to => "admin#edit_user_privileges")
   post("admin/edit_admin", :to => "admin#edit_admin")
