@@ -22,5 +22,8 @@
 	
 	<%= render("students/get_help_button") %><br>
 	<%= render("students/add_course_button") %><br>
+	<% if @highest_privilege < 3 %>
+	  <%= render("sessions/change_perspective_button") %><br>
+	<% end %>
   </div>
 </div>

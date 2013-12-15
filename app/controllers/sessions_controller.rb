@@ -35,20 +35,31 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to(:action => :login)
   end
+  
+  def admin_perspective
+    @user = User.find(session[:user_id])
+    render "admin/admin_home"
+  end
+  
+  def ta_perspective
+    @user = User.find(session[:user_id])
+    @names = get_request_list
+    render "tas/ta_home"
+  end
+  
+  def student_perspective
+    @user = User.find(session[:user_id])
+    render "sessions/home"
+  end
 
   def home
     @user = User.find(session[:user_id])
-    highest_privilege = @user.privileges.order(id: :asc).first.id
-	requests = Request.all.where(active: true)
-	@names = []
-	for r in requests
-	   _user = User.find(r.user_id)
-	   @names << _user.username
-	end
+    @highest_privilege = @user.privileges.order(id: :asc).first.id
     
-    if highest_privilege == 3 		#3=student
+    if @highest_privilege == 3 		#3=student
       render "home"
-    elsif highest_privilege == 2 	#2=ta
+    elsif @highest_privilege == 2 	#2=ta
+      @names = get_request_list
       render "tas/ta_home"
     else 							#1=admin
       render "admin/admin_home"
@@ -65,6 +76,15 @@ class SessionsController < ApplicationController
   require 'net/ldap'
 
   private
+  
+    def get_request_list
+      active_requests = []
+	  for r in Request.all.where(active: true)
+	     _user = User.find(r.user_id)
+	     active_requests << _user.username
+	  end
+	  return active_requests
+    end
   
     def authenticate_user(username, password)
       #prevents guest account access

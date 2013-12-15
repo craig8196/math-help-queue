@@ -5,21 +5,6 @@ class AdminController < ApplicationController
     render "admin_home"
   end
   
-  def ta_perspective
-    @user = User.find(session[:user_id])
-    @names = []
-	for r in Request.all.where(active: true)
-	   _user = User.find(r.user_id)
-	   @names << _user.username
-	end
-    render "tas/ta_home"
-  end
-  
-  def student_perspective
-    @user = User.find(session[:user_id])
-    render "sessions/home"
-  end
-  
   def manage_courses
     @all_courses = Course.all.order(title: :asc)
     render "manage_courses"
