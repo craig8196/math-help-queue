@@ -7,12 +7,14 @@ MathHelpQueue::Application.routes.draw do
   post("sessions/logout", :to => "sessions#logout")
   post("sessions/settings", :to => "sessions#settings")
   post("sessions/edit_admin", :to => "sessions#edit_admin")
-  get("session/change_perspective", :to => "session#change_perspective")
-  post("session/change_perspective", :to => "session#change_perspective")
-  get("session/ta_perspective", :to => "session#ta_perspective")
-  post("session/ta_perspective", :to => "session#ta_perspective")
-  get("session/student_perspective", :to => "session#student_perspective")
-  post("session/student_perspective", :to => "session#student_perspective")
+  get("sessions/change_perspective", :to => "sessions#change_perspective")
+  post("sessions/change_perspective", :to => "sessions#change_perspective")
+  get("sessions/admin_perspective", :to => "sessions#admin_perspective")
+  post("sessions/admin_perspective", :to => "sessions#admin_perspective")
+  get("sessions/ta_perspective", :to => "sessions#ta_perspective")
+  post("sessions/ta_perspective", :to => "sessions#ta_perspective")
+  get("sessions/student_perspective", :to => "sessions#student_perspective")
+  post("sessions/student_perspective", :to => "sessions#student_perspective")
   #get "sessions/home"
   #get "sessions/profile"
   #get "sessions/setting"
