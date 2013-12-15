@@ -1,4 +1,4 @@
-<% @page_title = "Add Course" -%>
+<% @page_title = "Manage Courses" -%>
 
 <div class="main">
   <div class="center">
@@ -6,7 +6,7 @@
       <center>
         <table>
           <tr>
-            <td colspan="2" align="center">Add Course</td>
+            <td colspan="2" align="center">Manage Courses</td>
           </tr>
           <tr>
             <div colspan=1>
@@ -27,35 +27,35 @@
         There are currently <%= @all_courses.count %> courses
       <% end %>
       in the system.<br><br>
-      Add a course below.
+      Add or delete a course below.
 	</p>
     
 	<center>
 	  <table name="existing_courses" class="center">
+	    <th></th>
 	    <th>&nbsp;&nbsp; Title &nbsp;&nbsp;</th>
 	    <th>&nbsp;&nbsp; Level &nbsp;&nbsp;</th>
 	    <th>&nbsp;&nbsp; Discipline &nbsp;&nbsp;</th>
 	    <th></th>
-	    <th></th>
 	    
 	    <%= form_tag("submit_new_course", method: "post") do %>
 	      <tr>
+	        <td></td>
 	        <td>&nbsp;&nbsp; <%= text_field(:new_course, :new_title, :required => true) %> &nbsp;&nbsp;</td>
 	        <td>&nbsp;&nbsp; <%= number_field(:new_course, :new_level, :required => true) %> &nbsp;&nbsp;</td>
 	        <td>&nbsp;&nbsp; <%= text_field(:new_course, :new_discipline, :required => true) %> &nbsp;&nbsp;</td>
 	        <td><input name="+" type="submit" value="+"/></td>
-	        <td></td>
 	      </tr>
 	    <% end %>
 	    
 	    <% @all_courses.each do |c| %>
 	      <%= form_tag("delete_course", method: "post") do %>
 	        <tr>
+	          <td class="hide"><%= text_field(:c, :cid, :value => c.id, :size => 1) %></td>
 	          <td><%= c.title %></td>
 	          <td><%= c.number %></td>
 	          <td><%= c.discipline %></td>
 	          <td><input name="-" type="submit" value="-"/></td>
-	          <td><%= text_field(:c, :cid, :value => c.id, :size => 1) %></td>
 	        </tr>
 	      <% end %>
 	    <% end %>

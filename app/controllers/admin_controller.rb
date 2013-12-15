@@ -10,9 +10,9 @@ class AdminController < ApplicationController
     render "edit_user_privileges"
   end
   
-  def add_new_course
+  def manage_courses
     @all_courses = Course.all.order(title: :asc)
-    render "add_new_course"
+    render "manage_courses"
   end
   
   def submit_new_course
@@ -26,11 +26,16 @@ class AdminController < ApplicationController
       end
     end
     @all_courses = Course.all.order(title: :asc)
-    render "add_new_course"
+    render "manage_courses"
   end
   
   def delete_course
-    render :text => params[:c][:cid]
+    course = params[:c]
+    if course
+      Course.delete(course[:cid])
+    end
+    @all_courses = Course.all.order(title: :asc)
+    render "manage_courses"
   end
   
   def edit_admin

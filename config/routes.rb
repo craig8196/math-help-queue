@@ -19,8 +19,8 @@ MathHelpQueue::Application.routes.draw do
   
   get("admin/admin_home", :to => "admin#admin_home")
   post("admin/admin_home", :to => "admin#admin_home")
-  get("admin/add_new_course", :to => "admin#add_new_course")
-  post("admin/add_new_course", :to => "admin#add_new_course")
+  get("admin/manage_courses", :to => "admin#manage_courses")
+  post("admin/manage_courses", :to => "admin#manage_courses")
   get("admin/submit_new_course", :to => "admin#submit_new_course")
   post("admin/submit_new_course", :to => "admin#submit_new_course")
   get("admin/delete_course", :to => "admin#delete_course")

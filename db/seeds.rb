@@ -7,8 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #populate courses
-courses = [{:title => "All", :discipline => "Admin", :number => 0},
-           {:title => "Calculus 1", :discipline => "Math", :number => 112}, 
+courses = [{:title => "Calculus 1", :discipline => "Math", :number => 112}, 
            {:title => "Calculus 2", :discipline => "Math", :number => 113}, 
            {:title => "Fundamentals of Mathematics", :discipline => "Math", :number => 290}, 
            {:title => "Linear Algebra", :discipline => "Math", :number => 313}, 
