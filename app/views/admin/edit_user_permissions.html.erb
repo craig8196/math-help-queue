@@ -4,10 +4,15 @@
   <div class="center">
     <h1 class="blue_white">
       <center>
-        <table width="380">
+        <table>
           <tr>
-            <td>Edit User Privileges</td>
-            <td><%= render("sessions/logout_button") %></td>
+            <td colspan="2" align="center">Edit User Privileges</td>
+          </tr>
+          <tr>
+            <div colspan=1>
+	          <td colspan="1" align="center"><%= render("admin/admin_home_button") %></td>
+	          <td colspan="1" align="center"><%= render("sessions/logout_button") %></td>
+	        </div>
           </tr>
         </table>
       </center>
@@ -18,8 +23,6 @@
     <p class="blue_black_b">
       User Permissions	  
 	</p>
-
-	<%= render("admin/admin_home_button") %>
     
 	<center>
 	  <table name="user_permissions" class="center">
@@ -40,6 +43,5 @@
 	    <% end %>
 	  </table>
 	</center>
-	<%= render("admin/admin_home_button") %>
   </div>
 </div>
