@@ -15,7 +15,7 @@ class AdminController < ApplicationController
     render "manage_courses"
   end
   
-  def submit_new_course
+  def add_course
     course = params[:new_course]
     if course
       title = course[:new_title]
