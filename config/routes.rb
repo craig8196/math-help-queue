@@ -5,16 +5,23 @@ MathHelpQueue::Application.routes.draw do
   get("sessions/home", :to => "sessions#home")
   post("sessions/home", :to => "sessions#home")
   post("sessions/logout", :to => "sessions#logout")
-  get("students/add_course", :to => "students#add_course")
-  post("students/_add_course_button", :to => "students#add_course_button")
   post("sessions/settings", :to => "sessions#settings")
-  post("students/get_help", :to => "students#get_help")
-  post("admin/edit_user_permissions", :to => "admin#edit_user_permissions")
-  get("admin/edit_user_permissions", :to => "admin#edit_user_permissions")
-  post("sessions/edit_admin", :to => "sessions#edit_admin")
   #get "sessions/home"
   #get "sessions/profile"
   #get "sessions/setting"
+  
+  post("students/get_help", :to => "students#get_help")
+  get("students/add_course", :to => "students#add_course")
+  post("students/_add_course_button", :to => "students#add_course_button")
+  
+  get("admin/admin_home", :to => "admin#admin_home")
+  post("admin/admin_home", :to => "admin#admin_home")
+  post("admin/edit_user_permissions", :to => "admin#edit_user_permissions")
+  get("admin/edit_user_permissions", :to => "admin#edit_user_permissions")
+  post("admin/edit_admin", :to => "admin#edit_admin")
+  post("admin/edit_ta", :to => "admin#edit_ta")
+  post("admin/edit_student", :to => "admin#edit_student")
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

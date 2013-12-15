@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
 		user.privileges << Privilege.find(3) #Adding privilege to user
       end
     end
+      
+    if not user.privileges.exists?(3) #Everybody gets a student privilege no matter what
+      user.privileges << Privilege.find(3)
+    end
     
     return user
   end
