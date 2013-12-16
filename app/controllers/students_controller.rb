@@ -1,4 +1,11 @@
 class StudentsController < ApplicationController
+
+  before_filter :get_user
+
+  def get_user
+     @user = User.find(session[:user_id])
+  end
+
   def add_course_button
     redirect_to(:action => :display_courses)
   end
@@ -15,7 +22,6 @@ class StudentsController < ApplicationController
   end
   
   def get_help
-    @user = User.find(session[:user_id])
     new_chapter = params[:chapter]
     new_problem = params[:problem]
     #TODO: add chapter and problem to db

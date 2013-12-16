@@ -1,0 +1,20 @@
+<% @page_title = "HelpingStudent" -%>
+
+<div class="main">
+  <div class="center">
+    <h1 class="blue_white">
+      <center>
+        <table width="380">
+          <tr>
+            <td align="center">Math Help Q</td>
+          </tr>
+        </table>
+      </center>
+    </h1>
+    <h3 class="gray_blue_sub">Teacher's Assistant</h3>
+    <%= flash[:notice] %>
+    <p class="blue_black_b">
+	  You are helping, <%= @next_student.username%>!<br>
+	 </p>
+  </div>
+</div>

@@ -28,6 +28,7 @@ MathHelpQueue::Application.routes.draw do
   post("students/_add_course_button", :to => "students#add_course_button")
 
   get("tas/ta_home", :to => "tas#ta_home")
+  get("tas/help_next_student", :to => "tas#help_next_student")
   
   get("admin/admin_home", :to => "admin#admin_home")
   post("admin/admin_home", :to => "admin#admin_home")
