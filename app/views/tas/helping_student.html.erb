@@ -1,3 +1,9 @@
+<html>
+<head>
+<script type="text/javascript" src="/assets/javascripts/timer.js">
+</script>
+</head>
+<body onload="setHelpTime(); setInterval('updateTimer()', 1000 )">
 <% @page_title = "HelpingStudent" -%>
 
 <div class="main">
@@ -16,6 +22,12 @@
     <p class="blue_black_b">
 	  You are helping <%= @next_student.username%> with chapter <%= @next_chapter%> problem <%= @next_problem%>.<br>
 	 </p>
-   <%= render("tas/finish_helping_student_button") %><br>
+   <p>
+   <%= render("tas/finish_helping_student_button") %></p>
+   <p class="blue_black_b">
+      <span id="timer">&nbsp;</span>
+   </p>
   </div>
 </div>
+</body>
+</html>
