@@ -39,11 +39,36 @@ function updateTimer()
 </head>
 <!--body onload="updateClock(); setInterval('updateClock()', 1000 )"><-->
 <body onload="setHelpTime(); setInterval('updateTimer()', 1000 )">
-<div class="center">
-<p class="blue_white"><%= "You are on the list to be helped." %></p>
-<p class="blue_black_b">Your position in the list is </p>
-<p class="lightTan_black"><%= @all_requests %> </p>
-<p class="blue_black_b"><span id="timer">&nbsp;</span></p>
-</div>
+  <div class="center">
+    <h1 class="blue_white">
+      <center>
+        <table width="380">
+          <tr>
+            <td align="center" colspan="2">Request Help</td>
+          </tr>
+          <tr>
+	        <td colspan="1" align="center"><%= render("sessions/home_button") %></td>
+	        <td colspan="1" align="center"><%= render("sessions/logout_button") %></td>
+          </tr>
+        </table>
+      </center>
+    </h1>
+    <h3 class="gray_blue_sub">Student</h3>
+    <%= flash[:notice] %>
+    
+    <p class="blue_black_b">
+      You are on the list to be helped.<br><br>
+      Your position in the list is:
+    </p>
+  
+    <p class="lightTan_black">
+      <%= @all_requests %>
+    </p>
+
+    <p class="blue_black_b">
+      <span id="timer">&nbsp;</span>
+    </p>
+    
+  </div>
 </body>
 </html>

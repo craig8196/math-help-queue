@@ -36,6 +36,12 @@ class SessionsController < ApplicationController
     redirect_to(:action => :login)
   end
   
+  def change_perspective
+    @user = User.find(session[:user_id])
+    @highest_privilege = @user.privileges.order(id: :asc).first.id
+    render "sessions/change_perspective"
+  end
+  
   def admin_perspective
     @user = User.find(session[:user_id])
     @highest_privilege = @user.privileges.order(id: :asc).first.id

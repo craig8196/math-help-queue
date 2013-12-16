@@ -1,8 +1,27 @@
 <%= flash[:notice] %>
 <div class="center">
-<p class="blue_white"><%= "Choose a course to add: " %></p>
-<%= form_tag(:action => :add_course, :method => :post) do %>
-  <%= select_tag(:course, options_from_collection_for_select(@all_courses, "id","name"), :class => 'blue_black_c') %>
-  <%= submit_tag("Add", :class => 'blue_white_b') %>
-<% end %>
+  <h1 class="blue_white">
+    <center>
+      <table width="380">
+        <tr>
+          <td align="center" colspan="2">Add Course</td>
+        </tr>
+        <tr>
+          <td colspan="1" align="center"><%= render("sessions/home_button") %></td>
+          <td colspan="1" align="center"><%= render("sessions/logout_button") %></td>
+        </tr>
+      </table>
+    </center>
+  </h1>
+  <h3 class="gray_blue_sub">Student</h3>
+  <%= flash[:notice] %>
+  
+  <p class="blue_black_b">
+    Choose a course to add:
+  </p>
+  
+  <%= form_tag(:action => :add_course, :method => :post) do %>
+    <%= select_tag(:course, options_from_collection_for_select(@all_courses, "id","name"), :class => 'blue_black_c') %>
+    <%= submit_tag("Add", :class => 'blue_white_b') %>
+  <% end %>
 </div> 

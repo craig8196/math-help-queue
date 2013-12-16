@@ -14,7 +14,15 @@
         </table>
       </center>
     </h1>
-    <h3 class="gray_blue_sub">permission level</h3>
+    <h3 class="gray_blue_sub">
+      <% if @highest_privilege == 1 %>
+        Administrator
+      <% elsif @highest_privilege == 2 %>
+        Teacher's Assistant
+      <% else %>
+        Student
+      <% end %>
+    </h3>
     <%= flash[:notice] %>
     
     <p class="blue_black_b">
@@ -25,8 +33,12 @@
 	  <table name="change_perspective" class="center">
 	    <th colspan="3"></th>
 	    <tr>
-	      <td colspan="1" class="center"><%= render("admin_perspective_button") %></td>
-	      <td colspan="1" class="center"><%= render("ta_perspective_button") %></td>
+	      <% if @highest_privilege == 1 %>
+	        <td colspan="1" class="center"><%= render("admin_perspective_button") %></td>
+	      <% end %>
+	      <% if @highest_privilege < 3 %>
+	        <td colspan="1" class="center"><%= render("ta_perspective_button") %></td>
+	      <% end %>
 	      <td colspan="1" class="center"><%= render("student_perspective_button") %></td>
 	    </tr>
 	  </table>	
