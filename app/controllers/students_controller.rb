@@ -20,4 +20,8 @@ class StudentsController < ApplicationController
     @all_requests = Request.all.where(active: true).count
   end
 
+  def create_request
+    render "create_request"
+  end
+
 end
