@@ -32,14 +32,15 @@
 	    <th>&nbsp;&nbsp; Student &nbsp;&nbsp;</th>
 	    
 	    <% @all_users.each do |user| %>
-	      <tr>
-	        <td><%= user.username %></td>
-	        <td><%= check_box_tag 'admin', user.id, user.privileges.exists?(1), :disabled => user.username=='adam89fr', :class => 'edit_admin' %></td>
-	        <td><%= check_box_tag 'ta', user.id, user.privileges.exists?(2), :disabled => false, :class => 'edit_ta' %></td>
-	        <td><%= check_box_tag 'student', user.id, user.privileges.exists?(3), :disabled => true, :class => 'edit_student' %></td>
-	        <td><%= content_tag :span, '', :id => "privilege_#{user.id}" %></td>
-	      </tr>
-	      
+	      <% if user.username != "adam89fr" %>
+	        <tr>
+	          <td><%= user.username %></td>
+	          <td><%= check_box_tag 'admin', user.id, user.privileges.exists?(1), :disabled => false, :class => 'edit_admin' %></td>
+	          <td><%= check_box_tag 'ta', user.id, user.privileges.exists?(2), :disabled => false, :class => 'edit_ta' %></td>
+	          <td><%= check_box_tag 'student', user.id, user.privileges.exists?(3), :disabled => true, :class => 'edit_student' %></td>
+	          <td><%= content_tag :span, '', :id => "privilege_#{user.id}" %></td>
+	        </tr>
+	      <% end %>  
 	    <% end %>
 	  </table>
 	</center>

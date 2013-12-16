@@ -3,7 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .hide {
+  visibility: hidden
+}
 
-visibility: hidden
+.mono_font{
+  font-family:"Courier New";
+  font-weight: bold;
+}
 
+.mono_font_sm{
+  font-family:"Courier New";
+  font-size: 10px !important;
+  font-weight: bold;
+  line-height: 1 !important;
 }

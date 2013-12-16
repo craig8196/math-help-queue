@@ -22,18 +22,24 @@
     
     <h4 class="gray_blue_sub">Current Help List</h4>
 	<p>
-	  <% @names.each_with_index do |n, index| %>
-      <% if (index % 2) == 0 %>
-        <div class="blue_black_bLeft">
+	  <% if @names != [] %>
+	    <% @names.each_with_index do |n, index| %>
+          <% if (index % 2) == 0 %>
+            <div class="blue_black_bLeft">
+          <% else %>
+            <div class="tan_black_bLeft">
+          <% end %>          
+          <%= index + 1 %>&nbsp;&nbsp;&nbsp;<%= n %><br>
+          </div>
+        <% end %>
       <% else %>
-        <div class="tan_black_bLeft">
-      <% end %>          
-      <%= index + 1 %>&nbsp;&nbsp;&nbsp;<%= n %><br>
-      </div>
+        <div class="blue_black_bLeft">&nbsp;&nbsp;&nbsp; None<br></div>
       <% end %>
     </p>
     <br>
-    <%= render("tas/help_student_button") %><br>
+    <% if @names != [] %>
+      <%= render("tas/help_student_button") %><br>
+    <% end %>
     <%= render("sessions/change_perspective_button") %><br>
   </div>
 </div>
