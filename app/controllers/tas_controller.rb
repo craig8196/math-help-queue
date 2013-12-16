@@ -7,10 +7,11 @@ class TasController < ApplicationController
 
   def help_next_student
   	#TODO: get real data about next request
-  	@next_student = User.find(session[:user_id])#Request.all.where(active: true)[0]
-  	@next_chapter = "16.2"
-  	@next_problem = "15"
-  	#TODO: set request to be inactive
+  	@next_request = Request.where(active: true).take
+  	@next_student = User.find(@next_request.user_id)
+  	@next_chapter = "16.2" #@next_request.chapter
+  	@next_problem = "15" #@next_request.next_problem
+  	Request.update(@next_request.id, :active => false)
   	render "helping_student"
   end
 
