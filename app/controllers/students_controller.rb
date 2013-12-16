@@ -24,6 +24,7 @@ class StudentsController < ApplicationController
   end
 
   def create_request
+    @user = User.find(session[:user_id])
     render "create_request"
   end
 

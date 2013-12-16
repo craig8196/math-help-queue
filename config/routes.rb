@@ -21,6 +21,7 @@ MathHelpQueue::Application.routes.draw do
   
   get("students/get_help", :to => "students#get_help")
   post("students/get_help", :to => "students#get_help")
+  get("students/create_request", :to => "students#create_request")
   post("students/create_request", :to => "students#create_request")
   get("students/add_course", :to => "students#display_courses")
   post("students/add_course", :to => "students#add_course")
