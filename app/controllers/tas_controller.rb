@@ -6,7 +6,11 @@ class TasController < ApplicationController
   end
 
   def help_next_student
-  	@next_student = Request.first.where(active: true)
+  	#TODO: get real data about next request
+  	@next_student = User.find(session[:user_id])#Request.all.where(active: true)[0]
+  	@next_chapter = "16.2"
+  	@next_problem = "15"
+  	#TODO: set request to be inactive
   	render "helping_student"
   end
 

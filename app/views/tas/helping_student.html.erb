@@ -14,7 +14,8 @@
     <h3 class="gray_blue_sub">Teacher's Assistant</h3>
     <%= flash[:notice] %>
     <p class="blue_black_b">
-	  You are helping, <%= @next_student.username%>!<br>
+	  You are helping <%= @next_student.username%> with chapter <%= @next_chapter%> problem <%= @next_problem%>.<br>
 	 </p>
+   <%= render("tas/finish_helping_student_button") %><br>
   </div>
 </div>
