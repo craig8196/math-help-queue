@@ -1,6 +1,17 @@
 class TasController < ApplicationController
-  def ta_home
+
+  before_filter :verify_permission
+
+  def verify_permission
   	@user = User.find(session[:user_id])
+  	@highest_privilege = @user.privileges.order(id: :asc).first.id
+  	if @highest_privilege > 2
+  		render "sessions/home"
+  	end
+  end
+
+  def ta_home
+  	# @user = User.find(session[:user_id])
   	@names = get_request_list
   	render "ta_home"
   end

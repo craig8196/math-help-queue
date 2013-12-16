@@ -1,5 +1,15 @@
 class AdminController < ApplicationController
 
+  before_filter :verify_permission
+
+  def verify_permission
+    @user = User.find(session[:user_id])
+    @highest_privilege = @user.privileges.order(id: :asc).first.id
+    if @highest_privilege > 1
+      render "sessions/home"
+    end
+  end
+
   def admin_home
 	@user = User.find(session[:user_id])
     render "admin_home"
