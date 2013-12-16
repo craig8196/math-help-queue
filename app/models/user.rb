@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
       else
    	    #Adding entry to the table privileges_users:
 		user.privileges << Privilege.find(3) #Adding privilege to user
-		if username = "adam89fr"
+		if username == "adam89fr"
 		  user.privileges << Privilege.find(1)
 		end
       end
