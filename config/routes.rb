@@ -7,6 +7,14 @@ MathHelpQueue::Application.routes.draw do
   post("sessions/logout", :to => "sessions#logout")
   post("sessions/settings", :to => "sessions#settings")
   post("sessions/edit_admin", :to => "sessions#edit_admin")
+  get("sessions/change_perspective", :to => "sessions#change_perspective")
+  post("sessions/change_perspective", :to => "sessions#change_perspective")
+  get("sessions/admin_perspective", :to => "sessions#admin_perspective")
+  post("sessions/admin_perspective", :to => "sessions#admin_perspective")
+  get("sessions/ta_perspective", :to => "sessions#ta_perspective")
+  post("sessions/ta_perspective", :to => "sessions#ta_perspective")
+  get("sessions/student_perspective", :to => "sessions#student_perspective")
+  post("sessions/student_perspective", :to => "sessions#student_perspective")
   #get "sessions/home"
   #get "sessions/profile"
   #get "sessions/setting"
@@ -17,9 +25,17 @@ MathHelpQueue::Application.routes.draw do
   get("students/add_course", :to => "students#display_courses")
   post("students/add_course", :to => "students#add_course")
   post("students/_add_course_button", :to => "students#add_course_button")
+
+  get("tas/ta_home", :to => "tas#ta_home")
   
   get("admin/admin_home", :to => "admin#admin_home")
   post("admin/admin_home", :to => "admin#admin_home")
+  get("admin/manage_courses", :to => "admin#manage_courses")
+  post("admin/manage_courses", :to => "admin#manage_courses")
+  get("admin/add_course", :to => "admin#add_course")
+  post("admin/add_course", :to => "admin#add_course")
+  get("admin/delete_course", :to => "admin#delete_course")
+  post("admin/delete_course", :to => "admin#delete_course")
   get("admin/add_new_course", :to => "admin#add_new_course")
   post("admin/add_new_course", :to => "admin#add_new_course")
   get("admin/submit_new_course", :to => "admin#submit_new_course")
@@ -29,7 +45,6 @@ MathHelpQueue::Application.routes.draw do
   post("admin/edit_admin", :to => "admin#edit_admin")
   post("admin/edit_ta", :to => "admin#edit_ta")
   post("admin/edit_student", :to => "admin#edit_student")
-  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
