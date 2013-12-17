@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   # => symbol, one of :student, :ta, :admin
   def self.get_highest_privilege_type(user)
     privilege_type = :student
-    highest_privilege = user.privileges.order(id: :asc).first
+    highest_privilege = user.privileges.order(:privilege_type => :asc).first
     if highest_privilege
       privilege_type = Privilege::get_privilege_type(highest_privilege)
     end

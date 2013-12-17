@@ -2,7 +2,7 @@ require 'net/ldap'
 
 class SessionsController < ApplicationController
   
-  before_filter :auto_authenticate_user, :only => [:home, :profile, :setting]
+  before_filter :auto_authenticate_user, :except => [:login, :login_attempt]
   before_filter :restore_login_state, :only => [:login, :login_attempt]
   
   # Controller for the login page.
@@ -29,6 +29,7 @@ class SessionsController < ApplicationController
         reset_session()
         # Set session variable and redirect to home.
         session[:user_id] = authorized_user.id
+        update_expires_at()
         redirect_to(:action => :home)
       else # Change to send back a server error?
         flash[:notice] = "Error finding your account. Contact your system administrator for more details."
@@ -41,7 +42,7 @@ class SessionsController < ApplicationController
   end
   
   def logout
-    session[:user_id] = nil
+    delete_session()
     redirect_to(:action => :login)
   end
   
@@ -83,12 +84,6 @@ class SessionsController < ApplicationController
       render "home"
     end
   end
-
-  def profile
-  end
-
-  def settings
-  end
   
   require 'net/ldap'
 
@@ -96,11 +91,11 @@ class SessionsController < ApplicationController
   
     def get_request_list
       active_requests = []
-	  for r in Request.all.where(active: true)
-	     _user = User.find(r.user_id)
-	     active_requests << _user.username
-	  end
-	  return active_requests
+      for r in Request.all.where(active: true)
+         _user = User.find(r.user_id)
+         active_requests << _user.username
+      end
+      return active_requests
     end
   
     # Uses BYU's LDAP server to authenticate users.

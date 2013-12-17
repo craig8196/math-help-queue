@@ -1,5 +1,6 @@
 class TasController < ApplicationController
 
+  before_filter :auto_authenticate_user
   before_filter :verify_permission
 
   def verify_permission

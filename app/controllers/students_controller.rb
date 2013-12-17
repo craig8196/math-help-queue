@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
 
+  before_filter :auto_authenticate_user
   before_filter :get_user
 
   def get_user

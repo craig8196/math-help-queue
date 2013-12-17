@@ -1,11 +1,12 @@
 class AdminController < ApplicationController
 
+  before_filter :auto_authenticate_user
   before_filter :verify_permission
 
   def verify_permission
     @user = User.find(session[:user_id])
-    @highest_privilege = @user.privileges.order(id: :asc).first.id
-    if @highest_privilege > 1
+    @highest_privilege = User.get_highest_privilege_type(@user)
+    if Privilege::PRIVILEGES[@highest_privilege] < Privilege::PRIVILEGES[:admin]
       render "sessions/home"
     end
   end
@@ -62,7 +63,7 @@ class AdminController < ApplicationController
   def edit_ta
     user = User.find(params['user_id'])
     
-	# checks if user already has privilege, if so, gets rid of it. otherwise, adds it.
+    # checks if user already has privilege, if so, gets rid of it. otherwise, adds it.
     if user.privileges.exists?(2)
       user.privileges.delete(2)
     else
@@ -73,7 +74,7 @@ class AdminController < ApplicationController
   def edit_student
     user = User.find(params['user_id'])
     
-	# checks if user already has privilege, if so, gets rid of it. otherwise, adds it.
+    # checks if user already has privilege, if so, gets rid of it. otherwise, adds it.
     if user.privileges.exists?(3)
       user.privileges.delete(3)
     else
