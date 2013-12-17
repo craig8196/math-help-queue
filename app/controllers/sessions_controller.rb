@@ -5,10 +5,16 @@ class SessionsController < ApplicationController
   before_filter :auto_authenticate_user, :only => [:home, :profile, :setting]
   before_filter :restore_login_state, :only => [:login, :login_attempt]
   
+  # Controller for the login page.
   def login
   end
 
+  # Handles login attempts.
+  # Successful login leads to the home page.
+  # Unsucessful login is redirected back to the login page with an error message.
   def login_attempt
+    
+    
     username = params.require(:username)
     password = params[:password]
     #valid_user = authenticate_user(username, password)
@@ -16,13 +22,16 @@ class SessionsController < ApplicationController
     
     if valid_user
       flash[:notice] = ""
-      authorized_user = User.get_authorized_user(username)
+      authorized_user = User.get_validated_user(username)
     
       if authorized_user
+        # Protects from fixed sessions attacks.
+        reset_session()
+        # Set session variable and redirect to home.
         session[:user_id] = authorized_user.id
         redirect_to(:action => :home)
-      else # this needs to be changed to send back a server error
-        flash[:notice] = "Error finding your account. Contact your system administrators for more details."
+      else # Change to send back a server error?
+        flash[:notice] = "Error finding your account. Contact your system administrator for more details."
         render "login"
       end
     else
@@ -38,42 +47,41 @@ class SessionsController < ApplicationController
   
   def change_perspective
     @user = User.find(session[:user_id])
-    @highest_privilege = @user.privileges.order(id: :asc).first.id
+    @highest_privilege = User.get_highest_privilege_type(@user)
     render "sessions/change_perspective"
   end
   
   def admin_perspective
     @user = User.find(session[:user_id])
-    @highest_privilege = @user.privileges.order(id: :asc).first.id
+    @highest_privilege = User.get_highest_privilege_type(@user)
     render "admin/admin_home"
   end
   
   def ta_perspective
     @user = User.find(session[:user_id])
-    @highest_privilege = @user.privileges.order(id: :asc).first.id
+    @highest_privilege = User.get_highest_privilege_type(@user)
     @names = get_request_list
     render "tas/ta_home"
   end
   
   def student_perspective
     @user = User.find(session[:user_id])
-    @highest_privilege = @user.privileges.order(id: :asc).first.id
+    @highest_privilege = User.get_highest_privilege_type(@user)
     render "sessions/home"
   end
 
   def home
     @user = User.find(session[:user_id])
-    @highest_privilege = @user.privileges.order(id: :asc).first.id
+    @highest_privilege = User.get_highest_privilege_type(@user)
     
-    if @highest_privilege == 3 		#3=student
-      render "home"
-    elsif @highest_privilege == 2 	#2=ta
+    if @highest_privilege == :admin
+      render "admin/admin_home"
+    elsif @highest_privilege == :ta
       @names = get_request_list
       render "tas/ta_home"
-    else 							#1=admin
-      render "admin/admin_home"
+    else
+      render "home"
     end
-    
   end
 
   def profile
@@ -95,8 +103,10 @@ class SessionsController < ApplicationController
 	  return active_requests
     end
   
+    # Uses BYU's LDAP server to authenticate users.
+    # => true if the user is valid; false otherwise
     def authenticate_user(username, password)
-      #prevents guest account access
+      # Prevents guest account access.
       if password == ""
         return false
       end

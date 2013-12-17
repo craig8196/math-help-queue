@@ -2,25 +2,16 @@
 
 <div class="main">
   <div class="center">
-    <h1 class="blue_white">
-      <center>
-        <table width="380">
-          <tr>
-            <td align="center">Math Help Q</td>
-          </tr>
-          <tr>
-            <td align="center"><%= render("sessions/logout_button") %></td>
-          </tr>
-        </table>
-      </center>
-    </h1>
+    <%= render("sessions/change_and_logout") %>
+    <div class="title">Math Help Q</div>
     <h3 class="gray_blue_sub">Teacher's Assistant</h3>
     <%= flash[:notice] %>
-    <p class="blue_black_b">
-	  Welcome, <%= @user.username %>!<br>
-	</p>
     
-    <h4 class="gray_blue_sub">Current Help List</h4>
+    <p class="blue_black_b">
+      Welcome, <%= @user.username %>!<br>
+    </p>
+    
+    <h3 class="gray_blue_sub">Current Help List</h3>
 	<p>
 	  <% if @names != [] %>
 	    <% @names.each_with_index do |n, index| %>
@@ -40,6 +31,5 @@
     <% if @names != [] %>
       <%= render("tas/help_student_button") %><br>
     <% end %>
-    <%= render("sessions/change_perspective_button") %><br>
   </div>
 </div>

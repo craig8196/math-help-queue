@@ -1,0 +1,9 @@
+<div class="gray_blue_sub">
+  <% if Privilege::PRIVILEGES[@highest_privilege] == Privilege::PRIVILEGES[:admin] %>
+    Administrator
+  <% elsif Privilege::PRIVILEGES[@highest_privilege] == Privilege::PRIVILEGES[:ta] %>
+    Teacher's Assistant
+  <% else %>
+    Student
+  <% end %>
+</div>

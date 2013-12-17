@@ -2,29 +2,18 @@
 
 <div class="main">
   <div class="center">
-    <h1 class="blue_white">
-	<center>
-	  <table width="380">
-	    <tr>
-		  <td align="center">Math Help Q</td>
-		</tr>
-		<tr>
-		  <td align="center"><%= render("sessions/logout_button") %></td>
-		</tr>
-      </table>
-	</center>
-	</h1>
-	<h3 class="gray_blue_sub">Student</h3>
+    <%= render("change_and_logout") %>
+    <div class="title">Math Help Q</div>
+    <h3 class="gray_blue_sub">Student</h3>
     <%= flash[:notice] %>
-    <p class="blue_black_b">
     
+    <p class="blue_black_b">
       Welcome, <%= @user.username %>!<br>
-	</p>
+    </p>
 	
-	<%= render("students/get_help_button") %><br>
-	<%= render("students/add_course_button") %><br>
-	<% if @highest_privilege < 3 %>
-	  <%= render("sessions/change_perspective_button") %><br>
-	<% end %>
+    <%= render("students/get_help_button") %><br>
+    <%= render("students/add_course_button") %><br>
+  
+    
   </div>
 </div>

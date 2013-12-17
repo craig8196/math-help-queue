@@ -2,46 +2,24 @@
 
 <div class="main">
   <div class="center">
-    <h1 class="blue_white">
-      <center>
-        <table width="380">
-          <tr>
-            <td align="center">Change Perspective</td>
-          </tr>
-          <tr>
-            <td align="center"><%= render("sessions/logout_button") %></td>
-          </tr>
-        </table>
-      </center>
-    </h1>
-    <h3 class="gray_blue_sub">
-      <% if @highest_privilege == 1 %>
-        Administrator
-      <% elsif @highest_privilege == 2 %>
-        Teacher's Assistant
-      <% else %>
-        Student
-      <% end %>
-    </h3>
+    <%= render("home_and_logout") %>
+    <div class="title">Change Perspective</div>
+    <%= render("display_privilege") %>
+    
     <%= flash[:notice] %>
     
-    <p class="blue_black_b">
+    <p class="directions">
       Choose a perspective you would like to view.
     </p>
 
-	<center>
 	  <table name="change_perspective" class="center">
-	    <th colspan="3"></th>
-	    <tr>
-	      <% if @highest_privilege == 1 %>
-	        <td colspan="1" class="center"><%= render("admin_perspective_button") %></td>
-	      <% end %>
-	      <% if @highest_privilege < 3 %>
-	        <td colspan="1" class="center"><%= render("ta_perspective_button") %></td>
-	      <% end %>
-	      <td colspan="1" class="center"><%= render("student_perspective_button") %></td>
-	    </tr>
-	  </table>	
-	</center>
+	    <% if Privilege::PRIVILEGES[@highest_privilege] >= Privilege::PRIVILEGES[:admin] %>
+	        <tr><td><%= render("admin_perspective_button") %></td></tr>
+      <% end %>
+      <% if Privilege::PRIVILEGES[@highest_privilege] >= Privilege::PRIVILEGES[:ta] %>
+	        <tr><td><%= render("ta_perspective_button") %></td></tr>
+      <% end %>
+      <tr><td><%= render("student_perspective_button") %></td></tr>
+	  </table>
   </div>
 </div>

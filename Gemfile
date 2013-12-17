@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
+# Use tabs_on_rails to easily build tabs
+gem "tabs_on_rails"
+
 # Use sqlite3 as the database for Active Record
 # Use mysql2 as the database for Active Record for production
 gem 'sqlite3'

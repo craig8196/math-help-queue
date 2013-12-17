@@ -2,15 +2,55 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$byu_blue: #00008B;
+// $byu_gold: #FFFFDD;
+$medium_blue: #104E8B;
+$light_blue: #009ACD;
+$gray_blue: #9FB6CD;
+
+
+* {
+font-size: 14px;
+font-family: "Pericles", Pericles, sans-serif;
+}
+
+h1 {
+font-size: 24px;
+}
+
 .blue_white {
 padding:15px;
 font-family:"Pericles", Pericles, sans-serif;
-background-color:#00008B;
+background-color: $byu_blue;
 color:white;
 }
 
+.main {
+margin-left:auto;
+margin-right:auto;
+text-align: center;
+width: 320px;
+height: 480px;
+border-width: 2px;
+border-color: black;
+border-style: ridge;
+}
+
 .center {
-text-align:center;
+margin-left:auto;
+margin-right:auto;
+text-align: center;
+}
+
+.title {
+font-size: 24px;
+text-align: center;
+color: white;
+padding:10px;
+margin: 0px;
+font-family:"Pericles", Pericles, sans-serif;
+background-color:#00008B;
+font-weight: 900;
 }
 
 .pericles {
@@ -35,12 +75,16 @@ color:white;
 }
 
 .blue_white_b {
-border:0.7px solid;
-border-radius:9px;
-padding:12px;
-font-family:"Pericles", Pericles, sans-serif;
-background-color:#104E8B;
-color:white;
+width: 160px;
+border: 1px solid;
+border-radius: 9px;
+border-color: black;
+padding: 5px;
+margin: 0px;
+font-family: "Pericles", Pericles, sans-serif;
+
+background-color: #104E8B;
+color: white;
 }
 
 button-to {
@@ -118,21 +162,28 @@ color:black;
 }
 
 .gray_blue_sub{
-margin-right:30%;
-margin-left:30%;
-padding:15px;
+// margin-right:30%;
+// margin-left:30%;
+padding:0px;
+margin: 0px;
+font-size: 22px;
 font-family:"Pericles", Pericles, sans-serif;
-background-color:#9FB6CD;
-color:#104E8B
+background-color: $gray_blue;
+color: $medium_blue;
+font-weight: 700;
 }
 
 .blue_white_b:hover {
-border:0.7px solid;
-border-radius:9px;
-padding:12px;
-font-family:"Pericles", Pericles, sans-serif;
-background-color:#009ACD;
-color:white;
+background-color: $light_blue;
+}
+
+.container{
+margin: 0px;
+padding: 0px;
+border: 0px;
+cellspacing: 0px;
+cellpadding: 0px;
+border-collapse: collapse;
 }
 
 .input_box {
@@ -141,6 +192,10 @@ margin-bottom:10px;
 padding:8px;
 border-style:solid;
 border-color:#79CDCD;
+}
+
+.instructions {
+
 }
 
 .lightTan_black {
@@ -154,3 +209,4 @@ font-family:"Pericles", Pericles, sans-serif;
 background-color:#FCF6CF;
 color:black;
 }
+

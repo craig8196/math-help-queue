@@ -2,18 +2,8 @@
 
 <div class="main">
   <div class="center">
-    <h1 class="blue_white">
-      <center>
-        <table width="380">
-          <tr>
-            <td align="center">Math Help Q</td>
-          </tr>
-          <tr>
-            <td align="center"><%= render("sessions/logout_button") %></td>
-          </tr>
-        </table>
-      </center>
-    </h1>
+    <%= render("sessions/change_and_logout") %>
+    <div class="title">Math Help Q</div>
     <h3 class="gray_blue_sub">Administrator</h3>
     <%= flash[:notice] %>
     

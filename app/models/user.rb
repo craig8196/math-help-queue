@@ -4,28 +4,36 @@ class User < ActiveRecord::Base
   
   validates_uniqueness_of(:username)
   
-  # gets a user object, or automatically registers the user if one is not found
-  def self.get_authorized_user(username="")
+  # The user is assumed to exist and be validated by this point.
+  # The user's account is created if needed or the existing account is retrieved.
+  def self.get_validated_user(username="")
+    # Prevent meaningless values from becoming accounts.
+    if username == "" or username == nil
+      return nil
+    end
+  
     user = User.find_by_username(username)
     
+    # Check if the account exists.
     if not user
       user = User.new({:username => username})
       if not user.save
         user = nil
-      else
-   	    #Adding entry to the table privileges_users:
-		user.privileges << Privilege.find(3) #Adding privilege to user
-		if username == "adam89fr"
-		  user.privileges << Privilege.find(1)
-		end
       end
-    end
-      
-    if not user.privileges.exists?(3) #Everybody gets a student privilege no matter what
-      user.privileges << Privilege.find(3)
     end
     
     return user
+  end
+  
+  # Takes a valid User object and returns the highest privilege type that user has as a symbol.
+  # => symbol, one of :student, :ta, :admin
+  def self.get_highest_privilege_type(user)
+    privilege_type = :student
+    highest_privilege = user.privileges.order(id: :asc).first
+    if highest_privilege
+      privilege_type = Privilege::get_privilege_type(highest_privilege)
+    end
+    return privilege_type
   end
   
 end
