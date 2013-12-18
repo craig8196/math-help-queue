@@ -13,6 +13,7 @@ class AdminController < ApplicationController
 
   def admin_home
 	@user = User.find(session[:user_id])
+	@is_ta = User.is_ta(@user)
     render "admin_home"
   end
   

@@ -8,14 +8,25 @@ $( document ).ready(function() {
 });
 </script>
 
-<div class="main">
   <div class="center">
-    <%= render("sessions/home_and_logout") %>
-    <div class="title">Math Help Q</div>
-    <h3 class="gray_blue_sub">Administrator</h3>
+    <h1 class="blue_white">
+    <center>
+      <table width="380">
+        <tr>
+          <td align="center" colspan="2">Manage Courses</td>
+        </tr>
+        <tr>
+          <div colspan=2>
+	        <td colspan="1" align="center"><%= render("sessions/admin_view_button_b") %></td>
+	        <td colspan="1" align="center"><%= render("sessions/logout_button") %></td>
+	      </div>
+        </tr>
+      </table>
+    </center>
+  </h1>
     <%= flash[:notice] %>
     
-    <p class="blue_black_b">
+    <p class="gray_blue_text">
       <% if @all_courses.count == 1 %>
         There is currently 1 course
       <% else %>
@@ -24,7 +35,8 @@ $( document ).ready(function() {
       in the system.<br><br>
       Add or delete a course below.
 	</p>
-    
+	
+    <div class="lightTan_black_b">
 	<center>
 	  <table name="existing_courses" class="center">
 	    <th></th>
@@ -56,6 +68,6 @@ $( document ).ready(function() {
 	    <% end %>
 	  </table>
 	</center>
+	</div>
 	
   </div>
-</div>

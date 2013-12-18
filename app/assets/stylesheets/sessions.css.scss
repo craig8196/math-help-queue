@@ -9,17 +9,12 @@ $light_blue: #009ACD;
 $gray_blue: #9FB6CD;
 
 
-* {
-font-size: 14px;
-font-family: "Pericles", Pericles, sans-serif;
-}
-
 h1 {
-font-size: 24px;
+font-size: 32px;
 }
 
 .blue_white {
-padding:15px;
+padding-bottom:19px;
 font-family:"Pericles", Pericles, sans-serif;
 background-color: $byu_blue;
 color:white;
@@ -75,16 +70,33 @@ color:white;
 }
 
 .blue_white_b {
-width: 160px;
+width:160px;
 border: 1px solid;
 border-radius: 9px;
 border-color: black;
-padding: 5px;
-margin: 0px;
+padding: 9px;
 font-family: "Pericles", Pericles, sans-serif;
-
 background-color: #104E8B;
 color: white;
+}
+
+.blue_white_b:hover {
+background-color: $light_blue;
+}
+
+.blue_white_d {
+width:160px;
+border: 1px solid;
+border-radius: 9px;
+border-color: black;
+padding: 9px;
+font-family: "Pericles", Pericles, sans-serif;
+background-color: $light_blue;
+color: white;
+}
+
+.blue_white_d:hover {
+background-color:#00BFFF;
 }
 
 button-to {
@@ -133,6 +145,8 @@ margin-right:33%;
 margin-left:33%;
 padding:12px;
 font-family:"Pericles", Pericles, sans-serif;
+font-weight:400;
+font-size:18px;
 background-color:#E0EEEE;
 color:black;
 }
@@ -141,8 +155,8 @@ color:black;
 text-align:left;
 border:1px solid;
 border-radius:5px;
-margin-right:33%;
-margin-left:33%;
+margin-right:25%;
+margin-left:25%;
 padding:6px;
 font-family:"Pericles", Pericles, sans-serif;
 background-color:#E0EEEE;
@@ -153,8 +167,8 @@ color:black;
 text-align:left;
 border:1px solid;
 border-radius:5px;
-margin-right:33%;
-margin-left:33%;
+margin-right:25%;
+margin-left:25%;
 padding:6px;
 font-family:"Pericles", Pericles, sans-serif;
 background-color:#FCF6CF;
@@ -162,10 +176,10 @@ color:black;
 }
 
 .gray_blue_sub{
-// margin-right:30%;
-// margin-left:30%;
-padding:0px;
-margin: 0px;
+text-align:center;
+margin-right:30%;
+margin-left:30%;
+padding:9px;
 font-size: 22px;
 font-family:"Pericles", Pericles, sans-serif;
 background-color: $gray_blue;
@@ -173,8 +187,26 @@ color: $medium_blue;
 font-weight: 700;
 }
 
-.blue_white_b:hover {
-background-color: $light_blue;
+.gray_blue_sub_small{
+border:1px solid;
+border-color:black;
+text-align:center;
+margin-right:43%;
+margin-left:43%;
+padding:9px;
+font-size: 22px;
+font-family:"Pericles", Pericles, sans-serif;
+background-color: $gray_blue;
+color: $medium_blue;
+font-weight: 700;
+}
+
+.gray_blue_text{
+text-align:center;
+font-size: 22px;
+font-family:"Pericles", Pericles, sans-serif;
+color: black;
+font-weight: 200;
 }
 
 .container{
@@ -207,6 +239,25 @@ padding:6px;
 font-size:28px;
 font-family:"Pericles", Pericles, sans-serif;
 background-color:#FCF6CF;
+color:black;
+}
+
+.lightTan_black_b {
+border:2px solid;
+border-radius:2px;
+margin-right:30%;
+margin-left:30%;
+padding:6px;
+font-family:"Pericles", Pericles, sans-serif;
+background-color:#FCF6CF;
+color:black;
+}
+
+.lightTan_box {
+border:2px solid;
+padding:6px;
+font-family:"Pericles", Pericles, sans-serif;
+background-color:#FFFFFE;
 color:black;
 }
 

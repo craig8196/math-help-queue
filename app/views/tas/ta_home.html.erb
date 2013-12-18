@@ -1,35 +1,44 @@
 <% @page_title = "Home" -%>
 
-<div class="main">
   <div class="center">
-    <%= render("sessions/change_and_logout") %>
-    <div class="title">Math Help Q</div>
-    <h3 class="gray_blue_sub">Teacher's Assistant</h3>
-    <%= flash[:notice] %>
-    
-    <p class="blue_black_b">
-      Welcome, <%= @user.username %>!<br>
+    <h1 class="blue_white">
+	  <p class="gray_blue_sub">Welcome, <%= @user.username %>!</p>
+      <table class="center">
+        <tr>
+          <td>Math Help Q&nbsp&nbsp</td>
+          <td><%= render("sessions/logout_button") %></td>
+	    </tr>
+      </table>
+    </h1>
+	
+	<p class="blue_black_b">
+      Teacher's Assistant<br>
     </p>
     
-    <h3 class="gray_blue_sub">Current Help List</h3>
+	<% if @names != [] %>
+      <%= render("tas/help_student_button") %><br>
+    <% end %>
+	<%= render("sessions/student_view_button") %><br>
+	<% if @is_admin %>
+      <%= render("sessions/admin_view_button") %><br>
+    <% end %>
+	
+    <%= flash[:notice] %>
+    <h3 class="gray_blue_text">Current Help List</h3>
 	<p>
 	  <% if @names != [] %>
 	    <% @names.each_with_index do |n, index| %>
           <% if (index % 2) == 0 %>
-            <div class="blue_black_bLeft">
-          <% else %>
             <div class="tan_black_bLeft">
+          <% else %>
+            <div class="blue_black_bLeft">
           <% end %>          
           <%= index + 1 %>&nbsp;&nbsp;&nbsp;<%= n %><br>
           </div>
         <% end %>
       <% else %>
-        <div class="blue_black_bLeft">&nbsp;&nbsp;&nbsp; None<br></div>
+        <div class="tan_black_bLeft">&nbsp;&nbsp;&nbsp; None<br></div>
       <% end %>
     </p>
     <br>
-    <% if @names != [] %>
-      <%= render("tas/help_student_button") %><br>
-    <% end %>
   </div>
-</div>

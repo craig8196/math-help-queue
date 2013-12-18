@@ -37,4 +37,20 @@ class User < ActiveRecord::Base
     return privilege_type
   end
   
+  def self.is_ta(user)
+    if user.privileges.where(:privilege_type => "ta").blank?
+	  return false
+	else
+	  return true
+	end
+  end
+  
+  def self.is_admin(user)
+    if user.privileges.where(:privilege_type => "admin").blank?
+	  return false
+	else
+	  return true
+	end
+  end
+	
 end

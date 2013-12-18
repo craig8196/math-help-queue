@@ -1,32 +1,31 @@
 <% @page_title = "CreateRequest" -%>
 
-<div class="main">
+
   <div class="center">
     <h1 class="blue_white">
-	<center>
-	  <table width="380">
-	    <tr>
-		  <td colspan="2" align="center">Math Help Q</td>
-		</tr>
-		<tr>
-		  <div>
-	        <td colspan="1" align="center"><%= render("sessions/home_button") %></td>
+    <center>
+      <table width="380">
+        <tr>
+          <td align="center" colspan="2">Get Help</td>
+        </tr>
+        <tr>
+          <div colspan=2>
+	        <td colspan="1" align="center"><%= render("sessions/student_view_button_b") %></td>
 	        <td colspan="1" align="center"><%= render("sessions/logout_button") %></td>
 	      </div>
-		</tr>
+        </tr>
       </table>
-	</center>
-	</h1>
+    </center>
+  </h1>
     <%= flash[:notice] %>
-    <p class="blue_black_b">
+    <p class="gray_blue_text">
       Which Problem?<br>
 	</p>
 	<%= form_tag(:action => :get_help, :method => :post) do %>
 	<p>
-	<%= text_field_tag("chapter", nil, placeholder: 'Chapter', :class => 'blue_black_c') %>
-	<%= text_field_tag("problem", nil, placeholder: 'Problem', :class => 'blue_black_c') %>
+	<%= text_field_tag("chapter", nil, placeholder: 'Chapter', :class => 'lightTan_box') %><br><br>
+	<%= text_field_tag("problem", nil, placeholder: 'Problem', :class => 'lightTan_box') %>
 	</p>
   	<%= submit_tag("Submit", :class => 'blue_white_b') %>
   	<% end %>
   </div>
-</div>

@@ -55,6 +55,7 @@ class SessionsController < ApplicationController
   def admin_perspective
     @user = User.find(session[:user_id])
     @highest_privilege = User.get_highest_privilege_type(@user)
+	@is_ta = User.is_ta(@user)
     render "admin/admin_home"
   end
   
@@ -62,17 +63,22 @@ class SessionsController < ApplicationController
     @user = User.find(session[:user_id])
     @highest_privilege = User.get_highest_privilege_type(@user)
     @names = get_request_list
+	@is_admin = User.is_admin(@user)
     render "tas/ta_home"
   end
   
   def student_perspective
     @user = User.find(session[:user_id])
     @highest_privilege = User.get_highest_privilege_type(@user)
+	@is_ta = User.is_ta(@user)
+	@is_admin = User.is_admin(@user)
     render "sessions/home"
   end
 
   def home
     @user = User.find(session[:user_id])
+	@is_ta = User.is_ta(@user)
+	@is_admin = User.is_admin(@user)
     @highest_privilege = User.get_highest_privilege_type(@user)
     
     if @highest_privilege == :admin

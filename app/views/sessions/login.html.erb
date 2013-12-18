@@ -1,9 +1,6 @@
 <% @page_title = "Sign In" -%>
-<div class= "main">
   <div class="center">
-    <div class="title">Math Help Q</div>
-    
-    
+    <h1 class="blue_white">Math Help Q</h1>
     
     <% if flash[:notice] -%>
       <div class="red_white"><%= flash[:notice] %></div><br>
@@ -15,5 +12,4 @@
       <%= submit_tag("Log In", :class => 'blue_white_b') %>
     <% end %>
   </div>
-</div>
 

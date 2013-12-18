@@ -4,26 +4,27 @@
     <center>
       <table width="380">
         <tr>
-          <td align="center" colspan="2">Add Course</td>
+          <td align="center" colspan="2">Add course</td>
         </tr>
         <tr>
           <div colspan=2>
-	        <td colspan="1" align="center"><%= render("sessions/home_button") %></td>
+	        <td colspan="1" align="center"><%= render("sessions/student_view_button_b") %></td>
 	        <td colspan="1" align="center"><%= render("sessions/logout_button") %></td>
 	      </div>
         </tr>
       </table>
     </center>
   </h1>
-  <h3 class="gray_blue_sub">Student</h3>
   <%= flash[:notice] %>
   
-  <p class="blue_black_b">
+  <p class="gray_blue_text">
     Choose a course to add:
   </p>
-  
-  <%= form_tag(:action => :add_course, :method => :post) do %>
-    <%= select_tag(:course, options_from_collection_for_select(@all_courses, "id","name"), :class => 'blue_black_c') %>
-    <%= submit_tag("Add", :class => 'blue_white_b') %>
-  <% end %>
+  <p>
+    <%= form_tag(:action => :add_course, :method => :post) do %>
+      <%= select_tag(:course, options_from_collection_for_select(@all_courses, "id","name"), :class => 'blue_black_c') %>
+	  &nbsp&nbsp
+      <%= submit_tag("Add", :class => 'blue_white_b') %>
+    <% end %>
+  </p>
 </div> 

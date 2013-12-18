@@ -24,12 +24,25 @@ class StudentsController < ApplicationController
     render "course_added"
   end
   
+  def cancel_help
+    @user = User.find(session[:user_id])
+    @request = @user.requests.last
+	@request.destroy
+	@is_admin = User.is_admin(@user)
+	@is_ta = User.is_ta(@user)
+	render "sessions/home"
+  end
+  
+  def refresh_page
+    @all_requests = Request.all.where(active: true).count
+    render "get_help"
+  end
+  
   def get_help
     new_chapter = params[:chapter]
     new_problem = params[:problem]
     #TODO: add chapter and problem to db
     @request = @user.requests.create(:active => true)
-    @all_requests = Request.all.where(active: true).count
   end
 
   def create_request

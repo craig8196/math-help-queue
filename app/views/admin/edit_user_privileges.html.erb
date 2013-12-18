@@ -1,20 +1,30 @@
 <% @page_title = "Edit Privileges" -%>
 
-<div class="main">
   <div class="center">
-    <%= render("sessions/home_and_logout") %>
-    <div class="title">Math Help Q</div>
-    <h3 class="gray_blue_sub">Administrator</h3>
+    <h1 class="blue_white">
+    <center>
+      <table width="380">
+        <tr>
+          <td align="center" colspan="2">Manage Courses</td>
+        </tr>
+        <tr>
+          <div colspan=2>
+	        <td colspan="1" align="center"><%= render("sessions/admin_view_button_b") %></td>
+	        <td colspan="1" align="center"><%= render("sessions/logout_button") %></td>
+	      </div>
+        </tr>
+      </table>
+    </center>
+  </h1>
     <%= flash[:notice] %>
-    
-    <p class="blue_black_b">
-      User Privileges	  
-    </p>
-    
+    <p class="gray_blue_text">
+	  User Privileges
+	</p>
+    <div class="lightTan_black_b">
 	  <table name="user_permissions" class="center">
-	    <th class="center">Username</th>
-	    <th class="center">Administrator</th>
-	    <th class="center">Teacher's Assistant</th>
+	    <th class="center">Username&nbsp&nbsp</th>
+	    <th class="center">Administrator&nbsp&nbsp</th>
+	    <th class="center">TA&nbsp&nbsp</th>
 	    <th class="center">Student</th>
 	    
 	    <% @all_users.each do |user| %>
@@ -29,5 +39,5 @@
 	      <% end %>  
 	    <% end %>
 	  </table>
+	</div>
   </div>
-</div>

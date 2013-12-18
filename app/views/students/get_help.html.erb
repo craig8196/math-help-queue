@@ -13,17 +13,16 @@
           </tr>
           <tr>
 		 	<div colspan=2>
-	          <td colspan="1" align="center"><%= render("sessions/home_button") %></td>
+	          <td colspan="1" align="center"><%= render("sessions/student_view_button_b") %></td>
 	          <td colspan="1" align="center"><%= render("sessions/logout_button") %></td>
 	        </div>
           </tr>
         </table>
       </center>
     </h1>
-    <h3 class="gray_blue_sub">Student</h3>
     <%= flash[:notice] %>
     
-    <p class="blue_black_b">
+    <p class="gray_blue_text">
       You are on the list to be helped.<br><br>
       Your position in the list is:
     </p>
@@ -32,9 +31,12 @@
       <%= @all_requests %>
     </p>
 
-    <p class="blue_black_b">
+    <p class="gray_blue_sub_small">
       <span id="timer">&nbsp;</span>
     </p>
+	
+	<%= render ("students/cancel_request_button") %><br>
+	<%= render ("students/refresh_button") %><br>
     
   </div>
 </body>

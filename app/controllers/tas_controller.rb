@@ -12,8 +12,9 @@ class TasController < ApplicationController
   end
 
   def ta_home
-  	# @user = User.find(session[:user_id])
+  	@user = User.find(session[:user_id])
   	@names = get_request_list
+	@is_admin = User.is_admin(@user)
   	render "ta_home"
   end
 

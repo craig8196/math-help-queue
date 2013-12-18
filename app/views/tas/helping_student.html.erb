@@ -6,28 +6,31 @@
 <body onload="setHelpTime(); setInterval('updateTimer()', 1000 )">
 <% @page_title = "HelpingStudent" -%>
 
-<div class="main">
   <div class="center">
     <h1 class="blue_white">
       <center>
         <table width="380">
           <tr>
-            <td align="center">Math Help Q</td>
+            <td align="center" colspan="2">Helping Student</td>
+          </tr>
+          <tr>
+		 	<div colspan=2>
+	          <td colspan="1" align="center"><%= render("sessions/ta_view_button_b") %></td>
+	          <td colspan="1" align="center"><%= render("sessions/logout_button") %></td>
+	        </div>
           </tr>
         </table>
       </center>
     </h1>
-    <h3 class="gray_blue_sub">Teacher's Assistant</h3>
     <%= flash[:notice] %>
-    <p class="blue_black_b">
+    <p class="gray_blue_text">
 	  You are helping <%= @next_student.username%> with chapter <%= @next_chapter%> problem <%= @next_problem%>.<br>
 	 </p>
-   <p>
-   <%= render("tas/finish_helping_student_button") %></p>
-   <p class="blue_black_b">
+   <p class="gray_blue_sub_small">
       <span id="timer">&nbsp;</span>
    </p>
+   <p>
+   <%= render("tas/finish_helping_student_button") %></p>
   </div>
-</div>
 </body>
 </html>
