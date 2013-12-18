@@ -1,0 +1,1 @@
+For the second milestone I learned ruby on rails (which is not a small task). I went through a couple of tutorials online, one of which involved building a basic blogging web app. I then started diving into the code that Craig had already written and figured out what was going on.
