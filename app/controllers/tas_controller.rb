@@ -21,8 +21,8 @@ class TasController < ApplicationController
   	#TODO: get real data about next request
   	@next_request = Request.where(active: true).take
   	@next_student = User.find(@next_request.user_id)
-  	@next_chapter = "16.2" #@next_request.chapter
-  	@next_problem = "15" #@next_request.next_problem
+  	@next_chapter = @next_request.chapter
+  	@next_problem = @next_request.problem
   	Request.update(@next_request.id, :active => false)
   	render "helping_student"
   end

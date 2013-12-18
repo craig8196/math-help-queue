@@ -28,7 +28,7 @@ class StudentsController < ApplicationController
     new_chapter = params[:chapter]
     new_problem = params[:problem]
     #TODO: add chapter and problem to db
-    @request = @user.requests.create(:active => true)
+    @request = @user.requests.create(:active => true, :chapter => new_chapter, :problem => new_problem)
     @all_requests = Request.all.where(active: true).count
   end
 
