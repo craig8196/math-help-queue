@@ -10,7 +10,7 @@ Links to Content
 * [Style Guide](StyleGuide.md)
 * [Ryan's Milestone] (firstMilestoneRyan.md)
 * Craig's [First Milestone] (firstMilestoneCraig.md) and [Second Milestone] (secondMilestoneCraig.md).
-* Adam's [First Milestone] (firstMilestoneAdam.md)
+* Adam's [First Milestone] (firstMilestoneAdam.md) and [Second Milestone] (secondMilestoneAdam.md) and [Final Report] (adamsReport.pdf).
 
 
 Getting Started
