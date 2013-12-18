@@ -18,6 +18,8 @@ class StudentsController < ApplicationController
 
   def add_course
     @new_course_id = params[:course]
+    @user.courses << Course.find(params[:course])
+    @user.save
     #TODO: actually add the course
     render "course_added"
   end

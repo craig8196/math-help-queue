@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many(:requests)
   has_and_belongs_to_many(:privileges)
+  has_and_belongs_to_many(:courses)
   
   validates_uniqueness_of(:username)
   

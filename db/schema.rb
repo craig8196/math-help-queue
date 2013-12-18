@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131216180651) do
+ActiveRecord::Schema.define(version: 20131218003841) do
 
   create_table "courses", force: true do |t|
     t.string   "title",      null: false
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20131216180651) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "courses_users", id: false, force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "course_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "courses_users", ["user_id", "course_id"], name: "index_courses_users_on_user_id_and_course_id"
 
   create_table "privileges", force: true do |t|
     t.string   "privilege_type", null: false
@@ -46,10 +55,14 @@ ActiveRecord::Schema.define(version: 20131216180651) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "username",          null: false
+    t.string   "username",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "highest_privilege"
+  end
+
+  create_table "users_courses", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "course_id"
   end
 
 end
