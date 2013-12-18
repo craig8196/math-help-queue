@@ -55,9 +55,10 @@ ActiveRecord::Schema.define(version: 20131218003841) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "username",   null: false
+    t.string   "username",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "highest_privilege"
   end
 
   create_table "users_courses", id: false, force: true do |t|
