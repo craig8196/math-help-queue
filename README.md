@@ -7,7 +7,7 @@ Links to Content
 
 * [Proposal](Proposal.md)
 * [Wireframe Mock-up](http://share.axure.com/LO8O6N/) Keep in mind that the application is going to be designed primarily for mobile devices and to be embedded in websites like Learning Suite.
-* [Database Design] (databaseDesign.md)
+* [Database Design] (databaseDesign.pdf)
 * [Style Guide](StyleGuide.md)
 * [Ryan's Milestone] (firstMilestoneRyan.md)
 * Craig's [First Milestone] (firstMilestoneCraig.md), [Second Milestone] (secondMilestoneCraig.md), and [Final Report] (finalReportCraig.md).
