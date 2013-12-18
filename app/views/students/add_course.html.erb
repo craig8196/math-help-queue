@@ -18,6 +18,22 @@
   <h3 class="gray_blue_sub">Student</h3>
   <%= flash[:notice] %>
   
+  <p>
+	  <% if @my_courses != [] %>
+	    <% @my_courses.each_with_index do |n, index| %>
+          <% if (index % 2) == 0 %>
+            <div class="blue_black_bLeft">
+          <% else %>
+            <div class="tan_black_bLeft">
+          <% end %>          
+          <%= index + 1 %>&nbsp;&nbsp;&nbsp;<%= n %><br>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="blue_black_bLeft">&nbsp;&nbsp;&nbsp; None<br></div>
+      <% end %>
+    </p>
+
   <p class="blue_black_b">
     Choose a course to add:
   </p>

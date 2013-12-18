@@ -12,6 +12,7 @@ class StudentsController < ApplicationController
   end
 
   def display_courses
+    @my_courses = get_my_courses
     @all_courses = Course.all
     render "add_course"
   end
@@ -20,7 +21,6 @@ class StudentsController < ApplicationController
     @new_course_id = params[:course]
     @user.courses << Course.find(params[:course])
     @user.save
-    #TODO: actually add the course
     render "course_added"
   end
   
@@ -35,6 +35,23 @@ class StudentsController < ApplicationController
   def create_request
     @user = User.find(session[:user_id])
     render "create_request"
+  end
+
+  def get_my_courses
+    all_my_courses = []
+    for c in Course.all(:joins => :users, :conditions => {:users => {:id => @user.id}})
+      all_my_courses << (c.discipline + " " + c.number.to_s)
+    end
+    return all_my_courses
+  end
+
+  def get_request_list
+    active_requests = []
+    for r in Request.all.where(active: true)
+      _user = User.find(r.user_id)
+      active_requests << _user.username
+    end
+    return active_requests
   end
 
 end
