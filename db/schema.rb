@@ -50,9 +50,10 @@ ActiveRecord::Schema.define(version: 20131218014834) do
   create_table "requests", force: true do |t|
     t.boolean  "active",     null: false
     t.integer  "user_id",    null: false
+    t.string   "chapter"
+    t.string   "problem"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "chapter"
   end
 
   create_table "users", force: true do |t|
