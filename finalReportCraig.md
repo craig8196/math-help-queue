@@ -31,6 +31,10 @@ The contributions for each member is as follows:
     *  Answered questions and attempted to explain Rails to group members to the best of my ability.
     *  Restructured the view since some buttons were duplicated, scattered, misplaced, or non-uniform.
 
+2. Adam's Contributions:
+	*  See [adam's report](adamsReport.pdf)
+	*  Note that some of my work was modified by others and may not appear as it originally did.
+	   (an example is the change perspective button being renamed as "admin view," "student view," etc.
 
 Future Work
 -----------
