@@ -10,8 +10,9 @@ Links to Content
 * [Database Design] (databaseDesign.pdf)
 * [Style Guide](StyleGuide.md)
 * [Ryan's Milestone] (firstMilestoneRyan.md)
-* Craig's [First Milestone] (firstMilestoneCraig.md), [Second Milestone] (secondMilestoneCraig.md), and [Final Report] (finalReportCraig.md).
+* Craig's [First Milestone] (firstMilestoneCraig.md), and [Second Milestone] (secondMilestoneCraig.md).
 * Adam's [First Milestone] (firstMilestoneAdam.md) and [Second Milestone] (secondMilestoneAdam.md) and [Final Report] (adamsReport.pdf).
+* [Final Report](finalReport.md)
 
 
 Getting Started
