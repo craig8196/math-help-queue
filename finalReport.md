@@ -36,6 +36,9 @@ The contributions for each member is as follows:
 	*  Note that some of my work was modified by others and may not appear as it originally did.
 	   (an example is the change perspective button being renamed as "admin view," "student view," etc.
 
+3. Jeremy's Contributions
+    * See [jeremy's report](jeremysReport.md)
+
 Future Work
 -----------
 
