@@ -17,6 +17,7 @@ MathHelpQueue::Application.routes.draw do
   post("sessions/student_perspective", :to => "sessions#student_perspective")
   post("students/cancel_help", :to => "students#cancel_help")
   post("students/refresh_page", :to => "students#refresh_page")
+  get("students/refresh_page", :to => "students#refresh_page")
   #get "sessions/home"
   #get "sessions/profile"
   #get "sessions/setting"
