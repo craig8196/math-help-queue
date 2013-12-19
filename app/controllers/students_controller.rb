@@ -27,14 +27,16 @@ class StudentsController < ApplicationController
   def cancel_help
     @user = User.find(session[:user_id])
     @request = @user.requests.last
-	@request.destroy
-	@is_admin = User.is_admin(@user)
-	@is_ta = User.is_ta(@user)
-	render "sessions/home"
+	  @request.destroy
+	  @is_admin = User.is_admin(@user)
+	  @is_ta = User.is_ta(@user)
+	  render "sessions/home"
   end
   
   def refresh_page
     @all_requests = Request.all.where(active: true).count
+    _list_requests = get_request_list
+    @my_request_index = _list_requests.rindex(@user.username) + 1
     render "get_help"
   end
   
@@ -43,6 +45,7 @@ class StudentsController < ApplicationController
     new_problem = params[:problem]
     @request = @user.requests.create(:active => true, :chapter => new_chapter, :problem => new_problem)
     @all_requests = Request.all.where(active: true).count
+    @my_request_index = @all_requests
   end
 
   def create_request
