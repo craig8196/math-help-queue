@@ -20,7 +20,9 @@
         </table>
       </center>
     </h1>
-    <%= flash[:notice] %>
+    <% if flash[:notice] -%>
+      <div class="red_white"><%= flash[:notice] %></div><br>
+    <% end %>
     
     <p class="gray_blue_text">
       You are on the list to be helped.<br><br>
@@ -28,7 +30,7 @@
     </p>
   
     <p class="lightTan_black">
-      <%= @all_requests %>
+      <%= @my_request_index %>
     </p>
 
     <p class="gray_blue_sub_small">
