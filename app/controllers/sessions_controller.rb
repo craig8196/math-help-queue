@@ -13,31 +13,33 @@ class SessionsController < ApplicationController
   # Successful login leads to the home page.
   # Unsucessful login is redirected back to the login page with an error message.
   def login_attempt
-    
-    
-    username = params.require(:username)
-    password = params[:password]
-    #valid_user = authenticate_user(username, password)
-    valid_user = true
-    
-    if valid_user
-      flash[:notice] = ""
-      authorized_user = User.get_validated_user(username)
-    
-      if authorized_user
-        # Protects from fixed sessions attacks.
-        reset_session()
-        # Set session variable and redirect to home.
-        session[:user_id] = authorized_user.id
-        update_expires_at()
-        redirect_to(:action => :home)
-      else # Change to send back a server error?
-        flash[:notice] = "Error finding your account. Contact your system administrator for more details."
+    begin
+      username = params.require(:username).downcase
+      password = params[:password]
+      valid_user = authenticate_user(username, password)
+      #valid_user = true # only use this for development
+      
+      if valid_user
+        flash[:notice] = ""
+        authorized_user = User.get_validated_user(username)
+      
+        if authorized_user
+          # Protects from fixed sessions attacks.
+          reset_session()
+          # Set session variable and redirect to home.
+          session[:user_id] = authorized_user.id
+          update_expires_at()
+          redirect_to(:action => :home)
+        else # Change to send back a server error?
+          flash[:notice] = "Error finding your account. Contact your system administrator for more details."
+          render "login"
+        end
+      else
+        flash[:notice] = "Invalid Username or Password"
         render "login"
       end
-    else
+    rescue
       flash[:notice] = "Invalid Username or Password"
-      render "login"
     end
   end
   
@@ -77,8 +79,8 @@ class SessionsController < ApplicationController
 
   def home
     @user = User.find(session[:user_id])
-	@is_ta = User.is_ta(@user)
-	@is_admin = User.is_admin(@user)
+    @is_ta = User.is_ta(@user)
+    @is_admin = User.is_admin(@user)
     @highest_privilege = User.get_highest_privilege_type(@user)
     
     if @highest_privilege == :admin
@@ -108,7 +110,7 @@ class SessionsController < ApplicationController
     # => true if the user is valid; false otherwise
     def authenticate_user(username, password)
       # Prevents guest account access.
-      if password == ""
+      if password == "" || password == nil
         return false
       end
     

@@ -6,14 +6,14 @@ class AdminController < ApplicationController
   def verify_permission
     @user = User.find(session[:user_id])
     @highest_privilege = User.get_highest_privilege_type(@user)
-    if Privilege::PRIVILEGES[@highest_privilege] < Privilege::PRIVILEGES[:admin]
+    if User::PRIVILEGES[@highest_privilege] < User::PRIVILEGES[:admin]
       render "sessions/home"
     end
   end
 
   def admin_home
-	@user = User.find(session[:user_id])
-	@is_ta = User.is_ta(@user)
+    @user = User.find(session[:user_id])
+    @is_ta = User.is_ta(@user)
     render "admin_home"
   end
   
@@ -53,33 +53,40 @@ class AdminController < ApplicationController
   def edit_admin
     user = User.find(params['user_id'])
     
-    # checks if user already has privilege, if so, gets rid of it. otherwise, adds it.
-    if user.privileges.exists?(1)
-      user.privileges.delete(1)
-    else
-      user.privileges << Privilege.find(1)
+    logger.debug "A"*100
+    
+    # Sets the admin privilege for the user.
+    if user
+      if user.admin?
+        user.privilege_type = "student"
+      else
+        user.privilege_type = "admin"
+      end
+      user.save
     end
   end
   
   def edit_ta
     user = User.find(params['user_id'])
-    
-    # checks if user already has privilege, if so, gets rid of it. otherwise, adds it.
-    if user.privileges.exists?(2)
-      user.privileges.delete(2)
-    else
-      user.privileges << Privilege.find(2)
+    logger.debug "T"*100
+    # Sets the ta privilege for the user.
+    if user
+      if user.ta?
+        user.privilege_type = "student"
+      else
+        user.privilege_type = "ta"
+      end
+      user.save
     end
   end
   
   def edit_student
     user = User.find(params['user_id'])
-    
-    # checks if user already has privilege, if so, gets rid of it. otherwise, adds it.
-    if user.privileges.exists?(3)
-      user.privileges.delete(3)
-    else
-      user.privileges << Privilege.find(3)
+    logger.debug "S"*100
+    # Sets the student privilege for the user.
+    if user
+      user.privilege_type = "student"
+      user.save
     end
   end
 end

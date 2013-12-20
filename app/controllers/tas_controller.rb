@@ -5,8 +5,8 @@ class TasController < ApplicationController
 
   def verify_permission
   	@user = User.find(session[:user_id])
-  	@highest_privilege = @user.privileges.order(id: :asc).first.id
-  	if @highest_privilege > 2
+  	@highest_privilege = User::get_highest_privilege_type(@user)
+  	if User::compare_privilege(@highest_privilege, :ta) < 0
   		render "sessions/home"
   	end
   end
@@ -14,7 +14,7 @@ class TasController < ApplicationController
   def ta_home
   	@user = User.find(session[:user_id])
   	@names = get_request_list
-	@is_admin = User.is_admin(@user)
+    @is_admin = User.is_admin(@user)
   	render "ta_home"
   end
 

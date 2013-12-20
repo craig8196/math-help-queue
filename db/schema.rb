@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131218014834) do
+ActiveRecord::Schema.define(version: 20131219193937) do
 
   create_table "courses", force: true do |t|
     t.string   "title",      null: false
@@ -49,17 +49,18 @@ ActiveRecord::Schema.define(version: 20131218014834) do
 
   create_table "requests", force: true do |t|
     t.boolean  "active",     null: false
+    t.string   "chapter",    null: false
+    t.string   "problem",    null: false
     t.integer  "user_id",    null: false
-    t.string   "chapter"
-    t.string   "problem"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.string   "username",   null: false
+    t.string   "username",                           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "privilege_type", default: "student", null: false
   end
 
   create_table "users_courses", id: false, force: true do |t|

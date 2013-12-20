@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   
   protected
     
+    # Checks the user's session for a valid user id and whether or not their session has expired.
+    # => true if the user is logged in; false otherwise
     def auto_authenticate_user()
       if session[:user_id]
         @authenticated_user = User.find(session[:user_id])
@@ -22,6 +24,7 @@ class ApplicationController < ActionController::Base
       end
     end
     
+    # Redirects the user if already logged in.
     def restore_login_state()
       if session[:user_id]
         redirect_to(:controller => "sessions", :action => "home")
@@ -31,6 +34,7 @@ class ApplicationController < ActionController::Base
       end
     end
     
+    # Deletes a user's session data.
     def delete_session()
       session[:user_id] = nil
       session[:expires_at] = nil
@@ -39,6 +43,8 @@ class ApplicationController < ActionController::Base
     # Timeout is in seconds.
     SESSION_TIMEOUT = 60*10
     
+    # Checks if the user's session has expired.
+    # => true if expired; false otherwise
     def session_expired?()
       if (Time.now <=> session[:expires_at]) > 0
         return true
@@ -47,6 +53,7 @@ class ApplicationController < ActionController::Base
       end
     end
     
+    # Updates the timestamp of when the user's session expires.
     def update_expires_at()
       session[:expires_at] = Time.now + SESSION_TIMEOUT
     end
