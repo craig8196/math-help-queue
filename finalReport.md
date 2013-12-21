@@ -45,6 +45,9 @@ The contributions for each member is as follows:
 
 3. Jeremy's Contributions
     * See [jeremy's report](jeremysReport.md)
+	
+4. Ryan's Contributions
+	* See [ryan's report] (ryansReport.md)
 
 Future Work
 -----------
